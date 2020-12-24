@@ -2,7 +2,7 @@
     <div>
         <div class="logo"></div>
         <Content></Content>
-        <el-button type="primary" @click="onClick">{{ btnText }}</el-button>
+        <button @click="onClick">{{ btnText }}</button>
     </div>
 </template>
 
@@ -32,7 +32,7 @@
     @import "~@/styles/index.scss";
 
     .logo {
-        @include size(128px, 128px);
+        @include size(1.28rem, 1.28rem);
         @include bg-img("~@/assets/xx.png");
     }
 </style>

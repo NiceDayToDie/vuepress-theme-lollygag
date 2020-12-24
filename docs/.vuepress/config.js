@@ -1,8 +1,16 @@
 const path = require("path");
 
 module.exports = {
-    title: "Hello VuePress",
-    description: "Just playing around",
+    title: "Lollygag",
+    head: [
+        ['link', {rel: 'icon', href: '/favicon.ico'}],
+        ['script', {src: '/static/setting.js'}]
+    ],
+    markdown: {
+        anchor: {
+            permalink: false
+        }
+    },
     configureWebpack: {
         resolve: {
             alias: {
