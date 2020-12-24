@@ -1,0 +1,17 @@
+{
+    "name": "vuepress-theme-lollygag",
+    "version": "1.0.0",
+    "scripts": {
+        "dev": "vuepress dev docs",
+        "build": "vuepress build docs"
+    },
+    "devDependencies": {
+        "async-validator": "^3.5.1",
+        "node-sass": "^4.12.0",
+        "sass-loader": "^8.0.2",
+        "vuepress": "^1.7.1"
+    },
+    "dependencies": {
+        "element-ui": "^2.14.1"
+    }
+}
