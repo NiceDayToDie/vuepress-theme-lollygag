@@ -28,11 +28,10 @@
     };
 </script>
 
-<style scoped lang="scss">
-    @import "~@/styles/utils/index.scss";
+<style scoped lang="stylus">
+    @require "~@/styles/mixins.styl"
 
-    .logo {
-        @include size(128px, 128px);
-        @include bg-img("~@/assets/xx.png");
-    }
+    .logo
+        size(128px, 128px)
+        bg-img("~@/assets/xx.png")
 </style>
