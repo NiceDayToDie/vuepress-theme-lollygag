@@ -6,10 +6,10 @@
         "build": "vuepress build docs"
     },
     "devDependencies": {
-        "async-validator": "^3.5.1",
         "node-sass": "^4.12.0",
         "sass-loader": "^8.0.2",
-        "vuepress": "^1.7.1"
+        "vuepress": "^1.7.1",
+        "vuepress-plugin-container": "^2.1.5"
     },
     "dependencies": {}
 }

@@ -17,6 +17,23 @@
 3. 将下载好的`pie.css`和`pie`文件夹放到 Typora 的主题文件夹中；
 4. 关闭并重新打开 Typora，从菜单栏中选择 “**主题**” => “**Pie**” 即可。
 > 中文用户如果想要更好的体验，建议安装 [更纱黑体](https://github.com/be5invis/Sarasa-Gothic)
+## 代码
+``` javascript {4}
+export default {
+  data () {
+    return {
+      msg: 'Highlighted!'
+    }
+  }
+}
+```
+::: theorem 牛顿第一定律
+假若施加于某物体的外力为零，则该物体的运动速度不变。
+
+::: right
+来自 [维基百科](https://zh.wikipedia.org/wiki/%E7%89%9B%E9%A1%BF%E8%BF%90%E5%8A%A8%E5%AE%9A%E5%BE%8B)
+:::
+
 ## 效果图
 ![image-20200323191439554](README_CN.assets/image-20200323191439554.png)
 ![image-20200324170435492](README_CN.assets/image-20200324170435492.png)
