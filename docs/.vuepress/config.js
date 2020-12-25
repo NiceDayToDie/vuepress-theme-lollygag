@@ -19,6 +19,18 @@ module.exports = {
     },
     plugins: [
         [
+            "@vuepress/search",
+            {
+                searchMaxSuggestions: 10
+            }
+        ],
+        [
+            "@vuepress/register-components",
+            {
+                componentsDir: "./theme/global-components/"
+            }
+        ],
+        [
             "vuepress-plugin-container",
             {
                 type: "right",
@@ -49,5 +61,11 @@ module.exports = {
                 after: "</div></div>",
             }
         ]
-    ]
+    ],
+    themeConfig: {
+        nav: [
+            { text: 'Guide', link: '/' },
+            { text: 'Config', link: '/config/' },
+        ]
+    }
 }

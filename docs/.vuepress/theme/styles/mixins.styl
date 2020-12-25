@@ -1,0 +1,21 @@
+size($width = 100%, $height = 100%)
+  width $width
+  height $height
+
+flex($row = row, $justify-content = flex-start, $align-items = flex-start)
+  display flex
+  flex-flow $row nowrap
+  justify-content $justify-content
+  align-items $align-items
+
+bg-img($url)
+  background-image url($url)
+  background-repeat no-repeat
+  background-position center
+  background-size 100% 100%
+
+ellipsis()
+  overflow hidden
+  -ms-text-overflow ellipsis
+  text-overflow ellipsis
+  white-space nowrap
