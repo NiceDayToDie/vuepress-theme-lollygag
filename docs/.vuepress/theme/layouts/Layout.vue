@@ -29,10 +29,10 @@
 </script>
 
 <style scoped lang="scss">
-    @import "~@/styles/index.scss";
+    @import "~@/styles/utils/index.scss";
 
     .logo {
-        @include size(1.28rem, 1.28rem);
+        @include size(128px, 128px);
         @include bg-img("~@/assets/xx.png");
     }
 </style>

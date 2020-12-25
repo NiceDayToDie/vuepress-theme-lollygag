@@ -1,6 +1,3 @@
-import "@/styles/common.scss";
-import "@/assets/md-theme/pie.css";
-
 // Vue: VuePress 正在使用的 Vue 构造函数
 // options: 附加到根实例的一些选项
 // router: 当前应用的路由实例
