@@ -3,6 +3,7 @@
 @require './code.styl'
 @require './wrapper.styl'
 @require './sw-popup.styl'
+@require './custom.styl'
 
 html, body
   padding 0
@@ -16,14 +17,6 @@ body
   font-family 'Source Sans Pro', '等距更纱黑体 SC', 'Helvetica Neue', Arial, sans-serif
   color $textColor
   background-color $bgColor
-
-::-webkit-scrollbar
-  width: 5px
-  height: 5px
-
-::-webkit-scrollbar-thumb
-  background-color: rgba(0, 0, 0, 0.3)
-  border-radius: 5px
 
 {$contentClass}:not(.custom)
 
@@ -139,19 +132,5 @@ tr
 th, td
   border 1px solid #dfe2e5
   padding .6em 1em
-
-.theorem
-  margin 1rem 0
-  padding .1rem 1.5rem
-  border-radius 0.4rem
-  background-color #f0f4f8
-  .title
-    font-weight bold
-
-.custom-block
-  &.right
-    color transparentify($textColor, 0.4)
-    font-size 0.9rem
-    text-align right
 
 @require 'mobile.styl'

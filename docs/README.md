@@ -34,6 +34,21 @@ export default {
 来自 [维基百科](https://zh.wikipedia.org/wiki/%E7%89%9B%E9%A1%BF%E8%BF%90%E5%8A%A8%E5%AE%9A%E5%BE%8B)
 :::
 
+::: fold
+这就是折叠的代码
+``` javascript {4}
+export default {
+  data () {
+    return {
+      msg: 'Highlighted!'
+    }
+  }
+}
+```
+::: right
+来自 [维基百科](https://zh.wikipedia.org/wiki/%E7%89%9B%E9%A1%BF%E8%BF%90%E5%8A%A8%E5%AE%9A%E5%BE%8B)
+:::
+
 ## 效果图
 ![image-20200323191439554](README_CN.assets/image-20200323191439554.png)
 ![image-20200324170435492](README_CN.assets/image-20200324170435492.png)
