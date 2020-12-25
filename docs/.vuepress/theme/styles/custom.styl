@@ -52,11 +52,16 @@
       font-weight bold
 
   .fold-content
-    display none
+    position absolute
+    transform scale(0)
+    opacity 0
+    transition opacity 0.3s linear
 
 .fold-wrapper input:checked ~ .fold-header
   .arrow
     transform rotate(90deg)
 
 .fold-wrapper input:checked ~ .fold-content
-  display block
+  position static
+  transform scale(1)
+  opacity 1
