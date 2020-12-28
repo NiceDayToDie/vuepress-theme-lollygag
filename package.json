@@ -6,6 +6,7 @@
         "build": "vuepress build docs"
     },
     "devDependencies": {
+        "@vuepress/plugin-blog": "^1.9.3",
         "@vuepress/plugin-register-components": "^1.7.1",
         "@vuepress/plugin-search": "^1.7.1",
         "node-sass": "^4.12.0",

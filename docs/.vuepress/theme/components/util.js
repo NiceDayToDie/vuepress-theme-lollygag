@@ -32,7 +32,8 @@ export function ensureExt(path) {
   if (endingSlashRE.test(normalized)) {
     return path
   }
-  return normalized + '.html' + hash
+  return normalized + hash
+  // return normalized + '.html' + hash
 }
 
 /*

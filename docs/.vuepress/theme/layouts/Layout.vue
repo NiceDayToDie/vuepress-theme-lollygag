@@ -1,37 +1,33 @@
 <template>
     <div>
-        <div class="logo"></div>
-        <Content></Content>
-        <button @click="onClick">{{ btnText }}</button>
+        {{ pages }}
     </div>
 </template>
+
 
 <script>
     export default {
         name: "Layout",
 
         data() {
-            return {
-                btnText: "111"
+            return {}
+        },
+
+        computed: {
+            pages() {
+                return this.$route.path === "/" ? this.$site.pages.filter(i => i.hasOwnProperty("title")) : this.$pagination.pages;
             }
         },
 
-        mounted() {
-            console.log("mounted");
-        },
+        watch: {},
 
-        methods: {
-            onClick() {
-                this.btnText = "222";
-            }
-        }
+        mounted() {},
+
+        methods: {}
     };
 </script>
 
 <style scoped lang="stylus">
     @require "~@/styles/mixins.styl"
 
-    .logo
-        size(128px, 128px)
-        bg-img("~@/assets/xx.png")
 </style>

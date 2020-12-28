@@ -60,12 +60,52 @@ module.exports = {
                                 `,
                 after: "</div></div>",
             }
+        ],
+        [
+            "@vuepress/blog",
+            {
+                directories: [
+                    {
+                        id: "code",
+                        dirname: "_posts/code",
+                        path: "/code",
+                        itemPermalink: "/code/:year/:month/:day/:slug",
+                    },
+                    {
+                        id: "game",
+                        dirname: "_posts/game",
+                        path: "/game",
+                        itemPermalink: "/game/:year/:month/:day/:slug",
+                    },
+                    {
+                        id: "life",
+                        dirname: "_posts/life",
+                        path: "/life",
+                        itemPermalink: "/life/:year/:month/:day/:slug",
+                    },
+                    {
+                        id: "movie",
+                        dirname: "_posts/movie",
+                        path: "/movie",
+                        itemPermalink: "/movie/:year/:month/:day/:slug",
+                    },
+                    {
+                        id: "music",
+                        dirname: "_posts/music",
+                        path: "/music",
+                        itemPermalink: "/music/:year/:month/:day/:slug",
+                    }
+                ]
+            }
         ]
     ],
     themeConfig: {
         nav: [
-            { text: 'Guide', link: '/' },
-            { text: 'Config', link: '/config/' },
+            {text: "life", link: "/life"},
+            {text: "code", link: "/code"},
+            {text: "game", link: "/game"},
+            {text: "movie", link: "/movie"},
+            {text: "music", link: "/music"}
         ]
     }
 }
