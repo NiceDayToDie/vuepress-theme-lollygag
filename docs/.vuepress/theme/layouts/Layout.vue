@@ -15,7 +15,9 @@
 
         computed: {
             pages() {
-                return this.$route.path === "/" ? this.$site.pages.filter(i => i.hasOwnProperty("title")) : this.$pagination.pages;
+                return this.$pagination ?
+                    this.$pagination.pages :
+                    this.$site.pages.filter(i => i.hasOwnProperty("title") & i.path !== "/");
             }
         },
 

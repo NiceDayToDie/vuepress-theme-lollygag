@@ -49,7 +49,8 @@
 
 <style lang="stylus">
     .nav-link
-        color $darkTextColor
+        font-weight bold
+        color #FFFFFF
 
     .nav-link
         &:hover, &.router-link-active

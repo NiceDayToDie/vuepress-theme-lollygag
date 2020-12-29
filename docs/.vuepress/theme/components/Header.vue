@@ -1,25 +1,21 @@
 <template>
-    <section>
-        <header id="header">
-            <div class="header-wrapper">
-                <div class="title">
-                    <NavLink link="/" class="home-link">{{ $site.title }}</NavLink>
-                </div>
-                <div class="header-right-wrap">
-                    <ul v-if="$themeConfig.nav" class="nav">
-                        <li
-                            v-for="item in $themeConfig.nav"
-                            :key="item.text"
-                            class="nav-item"
-                        >
-                            <NavLink :link="item.link">{{ item.text }}</NavLink>
-                        </li>
-                    </ul>
-                    <SearchBox/>
-                </div>
+    <header id="header">
+        <div class="header-wrapper">
+            <div class="title">
+                <NavLink link="/" class="home-link">{{ $site.title }}</NavLink>
             </div>
-        </header>
-    </section>
+            <div class="header-right-wrap">
+                <ul v-if="$themeConfig.nav" class="nav">
+                    <li v-for="item in $themeConfig.nav"
+                        :key="item.text"
+                        class="nav-item">
+                        <NavLink :link="item.link">{{ item.text | upperCase }}</NavLink>
+                    </li>
+                </ul>
+                <SearchBox/>
+            </div>
+        </div>
+    </header>
 </template>
 
 <script>
@@ -27,22 +23,31 @@
 
     export default {
         name: "Header",
+
         components: {
             SearchBox
+        },
+
+        filters: {
+            upperCase: function (value) {
+                return value.toUpperCase();
+            }
         }
     }
 </script>
 
 <style scoped lang="stylus">
+    @require "~@/styles/mixins.styl"
+
     #header
-        z-index 12
-        position fixed
         top 0
+        z-index 12
         width 100vw
+        position fixed
         height $headerHeight
         box-sizing border-box
         background-color $headerBgColor
-        padding 20px 32px 20px
+        padding 20px 0
         margin auto
         box-shadow 0 5px 20px rgba(0, 0, 0, 0.03), 0 6px 6px rgba(0, 0, 0, 0.05)
         transition all 1s cubic-bezier(0.25, 0.8, 0.25, 1)
@@ -55,15 +60,14 @@
         &:hover
             box-shadow 0 5px 20px rgba(0, 0, 0, 0.08), 0 6px 6px rgba(0, 0, 0, 0.1)
 
-        // border-bottom 5px solid lighten(#3eaf7c, 50%)
 
         .header-wrapper
             display flex
             line-height 40px
-            height 40px
+            size 1000px, 40px
+            margin auto
 
             .title
-                /* flex 0 0 200px */
                 font-size 30px
                 margin 0
                 letter-spacing 2px
@@ -71,7 +75,7 @@
                 text-transform uppercase
 
                 a
-                    color $darkTextColor
+                    color #FFFFFF
                     font-weight bold
                     text-decoration none
 
@@ -90,14 +94,11 @@
                         margin-left 20px
 
                         a
-                            font-family PT Serif, Serif
                             font-size 20px
-                            // color lighten(#3eaf7c, 30%)
                             text-decoration none
                             transition color 0.3s
 
                 .search-box
-                    font-family PT Serif, Serif
                     margin-left 20px
 
                     input
