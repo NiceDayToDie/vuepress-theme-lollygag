@@ -42,6 +42,7 @@
 
 <style lang="stylus">
     #global-layout
+        position relative
         word-wrap break-word
 
     .content-wrapper

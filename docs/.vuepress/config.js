@@ -118,7 +118,7 @@ module.exports = {
     ],
     markdown: {
         anchor: {
-            permalink: false
+            level: 2
         }
     },
     configureWebpack: {
