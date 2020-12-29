@@ -50,6 +50,4 @@ export default {
 :::
 
 ## 效果图
-![image-20200323191439554](README_CN.assets/image-20200323191439554.png)
-![image-20200324170435492](README_CN.assets/image-20200324170435492.png)
-![Snipaste_2020-05-22_17-46-40](README_CN.assets/Snipaste_2020-05-22_17-46-40.png)![Snipaste_2020-05-22_17-47-12](README_CN.assets/Snipaste_2020-05-22_17-47-12.png)
+![image-20200323191439554](https://d33wubrfki0l68.cloudfront.net/ae111c6a627e25fc34ce2ec9d5ca3d883f247d3e/15d93/image-2.ddbb59d5.jpg)
