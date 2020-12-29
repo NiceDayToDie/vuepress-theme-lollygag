@@ -51,6 +51,13 @@ const containerConfig = [
 const blogConfig = [
     "@vuepress/blog",
     {
+        comment: {
+            service: "vssue",
+            owner: "",
+            repo: "",
+            clientId: "",
+            clientSecret: "",
+        },
         directories: [
             {
                 id: "code",
@@ -101,6 +108,11 @@ const mediumZoomConfig = [
 
 module.exports = {
     title: "Lollygag",
+    locales: {
+        "/": {
+            lang: "zh-CN"
+        }
+    },
     head: [
         ["link", {rel: "icon", href: "/favicon.ico"}],
     ],
