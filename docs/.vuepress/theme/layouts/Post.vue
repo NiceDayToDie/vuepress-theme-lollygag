@@ -6,7 +6,7 @@
         <VueAPlayer class="music-player"
                     autoplay
                     listFolded
-                    volume="1"
+                    :volume="1"
                     repeat="list"
                     listMaxHeight="160px"
                     theme="#f99793"
