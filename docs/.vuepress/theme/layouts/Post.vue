@@ -1,8 +1,6 @@
 <template>
     <section>
         <Toc></Toc>
-        <Content></Content>
-        <Comment></Comment>
         <VueAPlayer class="music-player"
                     autoplay
                     listFolded
@@ -12,6 +10,8 @@
                     theme="#f99793"
                     :music="musicList[0]"
                     :list="musicList"/>
+        <Content></Content>
+        <Comment></Comment>
     </section>
 </template>
 
@@ -137,4 +137,10 @@
         position fixed
         bottom 0
         left 0
+
+        @media (max-width: $MQMobile)
+            &
+                position static
+                width 100%
+                margin 0
 </style>
