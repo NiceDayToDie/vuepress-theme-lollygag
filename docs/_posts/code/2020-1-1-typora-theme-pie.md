@@ -1,3 +1,10 @@
+---
+date: 2020-1-1
+tags: 
+ - code
+ - vue
+---
+
 # typora-theme-pie
 > 一个`typora`主题，具有[少数派](http://www.sspai.com)和 [Misty](https://github.com/etigerstudio/typora-misty-theme) 的风格。
 [English](2020-1-1-typora-theme-pie.md) | 简体中文  

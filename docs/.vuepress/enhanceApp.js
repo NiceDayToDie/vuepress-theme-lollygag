@@ -2,4 +2,6 @@
 // options: 附加到根实例的一些选项
 // router: 当前应用的路由实例
 // siteData: 站点元数据
-export default ({Vue, options, router, siteData}) => {}
+export default ({Vue, options, router, siteData}) => {
+    Vue.filter("upperCase", value => value.toUpperCase());
+}

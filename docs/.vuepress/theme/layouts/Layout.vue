@@ -1,7 +1,10 @@
 <template>
-    <div>
-        {{ pages }}
-    </div>
+    <article>
+        <div>{{ $page.frontmatter.title }}</div>
+        <div style="margin-top: 20px">
+            {{ pages }}
+        </div>
+    </article>
 </template>
 
 

@@ -62,32 +62,47 @@ const blogConfig = [
             {
                 id: "code",
                 dirname: "_posts/code",
-                path: "/code",
-                itemPermalink: "/code/:year/:month/:day/:slug",
+                path: "/archives/code",
+                itemPermalink: "/archives/code/:year/:month/:day/:slug",
             },
             {
                 id: "game",
                 dirname: "_posts/game",
-                path: "/game",
-                itemPermalink: "/game/:year/:month/:day/:slug",
+                path: "/archives/game",
+                itemPermalink: "/archives/game/:year/:month/:day/:slug",
             },
             {
                 id: "life",
                 dirname: "_posts/life",
-                path: "/life",
-                itemPermalink: "/life/:year/:month/:day/:slug",
+                path: "/archives/life",
+                itemPermalink: "/archives/life/:year/:month/:day/:slug",
             },
             {
                 id: "movie",
                 dirname: "_posts/movie",
-                path: "/movie",
-                itemPermalink: "/movie/:year/:month/:day/:slug",
+                path: "/archives/movie",
+                itemPermalink: "/archives/movie/:year/:month/:day/:slug",
             },
             {
                 id: "music",
                 dirname: "_posts/music",
-                path: "/music",
-                itemPermalink: "/music/:year/:month/:day/:slug",
+                path: "/archives/music",
+                itemPermalink: "/archives/music/:year/:month/:day/:slug",
+            }
+        ],
+        frontmatters: [
+            {
+                id: "archives",
+                keys: [],
+                path: "/archives/",
+                layout: "Archives"
+            },
+            {
+                id: "tags",
+                keys: ["tags"],
+                path: "/tags/",
+                layout: "Tags",
+                scopeLayout: "Layout"
             }
         ]
     }
@@ -139,11 +154,15 @@ module.exports = {
     ],
     themeConfig: {
         nav: [
-            {text: "life", link: "/life"},
-            {text: "code", link: "/code"},
-            {text: "game", link: "/game"},
-            {text: "movie", link: "/movie"},
-            {text: "music", link: "/music"}
+            {text: "archives", link: "/"},
+            {text: "tags", link: "/tags"}
+        ],
+        categories: [
+            {text: "life", link: "archives/life"},
+            {text: "code", link: "archives/code"},
+            {text: "game", link: "archives/game"},
+            {text: "movie", link: "archives/movie"},
+            {text: "music", link: "archives/music"}
         ]
     }
 }

@@ -26,12 +26,6 @@
 
         components: {
             SearchBox
-        },
-
-        filters: {
-            upperCase: function (value) {
-                return value.toUpperCase();
-            }
         }
     }
 </script>
