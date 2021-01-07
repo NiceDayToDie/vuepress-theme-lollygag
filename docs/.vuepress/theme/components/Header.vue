@@ -2,7 +2,7 @@
     <header id="header">
         <div class="header-wrapper">
             <div class="title">
-                <NavLink link="/" class="home-link">{{ $site.title }}</NavLink>
+                <NavLink link="/" class="home-link" :data-text="$site.title">{{ $site.title }}</NavLink>
             </div>
             <div class="header-right-wrap">
                 <ul v-if="$themeConfig.nav" class="nav">
@@ -68,10 +68,52 @@
                 display block
                 text-transform uppercase
 
+                random(a, b)
+                    return math(math(0, "random")*(b - a + 1) + a, "floor")
+
+                @keyframes ani1 {
+                    $indent=20
+                    for $index in 1..$indent {
+                        {$index*100/$indent + "%"} {
+                            clip-path: inset(random(0, 100)*1px 0 random(0, 100)*1px 0)
+                        }
+                    }
+                }
+
+                @keyframes ani2 {
+                    $indent=20
+                    for $index in 1..$indent {
+                        {$index*100/$indent + "%"} {
+                            clip-path: inset(random(0, 100)*1px 0 random(0, 100)*1px 0)
+                        }
+                    }
+                }
+
                 a
                     color #FFFFFF
                     font-weight bold
                     text-decoration none
+
+                .home-link
+                    position relative
+
+                    &:before {
+                        content: attr(data-text);
+                        position: absolute;
+                        text-shadow: 2px 0 red;
+                        left: -2px;
+                        clip-path: inset(0 0 0 0);
+                        animation: ani2 2s infinite linear alternate-reverse;
+                    }
+
+                    &:after {
+                        content: attr(data-text);
+                        position: absolute;
+                        text-shadow: -2px 0 blue;
+                        left: 2px;
+                        clip-path: inset(0 0 0 0);
+                        animation: ani1 2s infinite linear alternate-reverse;
+                    }
 
             .header-right-wrap
                 flex 1
