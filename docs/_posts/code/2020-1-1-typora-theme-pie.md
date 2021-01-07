@@ -40,7 +40,7 @@ tags:
 export default {
   data () {
     return {
-      msg: 'Highlighted!'
+      msg: 'HighlightedHighlightedHighlightedHighlightedHighlightedHighlightedHighlightedHighlightedHighlightedHighlightedHighlightedHighlightedHighlightedHighlightedHighlightedHighlightedHighlightedHighlightedHighlightedHighlightedHighlightedHighlightedHighlightedHighlightedHighlighted!'
     }
   }
 }
