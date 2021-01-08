@@ -158,6 +158,7 @@ module.exports = {
             {text: "tags", link: "/tags"}
         ],
         categories: [
+            {text: "all", link: "/"},
             {text: "life", link: "/life"},
             {text: "code", link: "/code"},
             {text: "game", link: "/game"},

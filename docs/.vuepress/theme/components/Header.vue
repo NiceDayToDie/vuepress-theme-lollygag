@@ -1,18 +1,31 @@
 <template>
-    <header id="header">
-        <div class="header-wrapper">
-            <div class="title">
-                <NavLink link="/" class="home-link" :data-text="$site.title">{{ $site.title }}</NavLink>
+    <header>
+        <div id="header">
+            <div class="header-wrapper">
+                <div class="title">
+                    <NavLink link="/" class="home-link" :data-text="$site.title">{{ $site.title }}</NavLink>
+                </div>
+                <div class="header-right-wrap">
+                    <ul v-if="$themeConfig.nav" class="nav">
+                        <li v-for="item in $themeConfig.nav"
+                            :key="item.text"
+                            class="nav-item">
+                            <NavLink :link="item.link">{{ item.text | upperCase }}</NavLink>
+                        </li>
+                    </ul>
+                    <SearchBox/>
+                </div>
             </div>
-            <div class="header-right-wrap">
-                <ul v-if="$themeConfig.nav" class="nav">
-                    <li v-for="item in $themeConfig.nav"
-                        :key="item.text"
-                        class="nav-item">
-                        <NavLink :link="item.link">{{ item.text | upperCase }}</NavLink>
-                    </li>
-                </ul>
-                <SearchBox/>
+        </div>
+        <div class="nav-sections">
+            <div class="menu">
+                <div v-for="(item, index) in $themeConfig.categories"
+                     :key="item.text"
+                     @click="onNavClick(item, index)"
+                     :class="['menu-item-link', index === activeIndex ? 'active' : '']">
+                    {{ item.text | upperCase }}
+                </div>
+                <div class="active-line"></div>
             </div>
         </div>
     </header>
@@ -26,6 +39,66 @@
 
         components: {
             SearchBox
+        },
+
+        data() {
+            return {
+                menu: null,
+                links: null,
+                activeLine: null,
+                activeIndex: 0
+            }
+        },
+
+        watch: {
+            "$route.path": function (nv, ov) {
+                if (nv === "/") this.handleActiveLinkUpdate(0);
+            }
+        },
+        
+        mounted() {
+            const nav = document.querySelector(".nav-sections");
+            this.menu = nav.querySelector(".menu");
+            this.links = nav.querySelectorAll(".menu-item-link");
+            this.activeLine = nav.querySelector(".active-line");
+            this.handleActiveLinkUpdate(0);
+        },
+
+        methods: {
+            setMenuLeftPosition(position) {
+                this.menu.scrollTo({left: position, behavior: "smooth"});
+            },
+
+            checkMenuOverflow() {
+                const activeLink = this.links[this.activeIndex].getBoundingClientRect();
+                const offset = 30;
+
+                if (Math.floor(activeLink.right) > window.innerWidth) {
+                    this.setMenuLeftPosition(this.menu.scrollLeft + activeLink.right - window.innerWidth + offset);
+                } else if (activeLink.left < 0) {
+                    this.setMenuLeftPosition(this.menu.scrollLeft + activeLink.left - offset)
+                }
+            },
+
+            moveActiveLine() {
+                const link = this.links[this.activeIndex];
+                const linkX = link.getBoundingClientRect().x;
+                const menuX = this.menu.getBoundingClientRect().x;
+
+                this.activeLine.style.transform = `translateX(${(this.menu.scrollLeft - menuX) + linkX}px)`;
+                this.activeLine.style.width = `${link.offsetWidth}px`;
+            },
+
+            handleActiveLinkUpdate(index) {
+                this.activeIndex = index;
+                this.checkMenuOverflow();
+                this.moveActiveLine();
+            },
+
+            onNavClick(item, index) {
+                this.handleActiveLinkUpdate(index);
+                this.$router.push(item.link);
+            }
         }
     }
 </script>
@@ -158,6 +231,61 @@
                             &.focused
                                 color $accentColor
 
+    .nav-sections {
+        $ease = cubic-bezier(0.23, 1, 0.32, 1);
+        $duration = 350ms;
+
+        position: fixed;
+        top: $headerHeight;
+        left 0
+        width 100%
+        background #FFFFFF
+        u-flex row, center, center
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+
+        .menu {
+            font-weight bold
+            max-width: $contentWidth;
+            u-flex row, flex-start, center
+            position: relative;
+            overflow: scroll;
+            overscroll-behavior: none;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            transform: translateZ(0);
+            transition: transform $ease $duration;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            .menu-item-link {
+                cursor pointer
+                display: block;
+                padding: 12px 16px;
+                text-decoration: none;
+                white-space: nowrap;
+                color: $textColor;
+                transition: color $ease $duration;
+
+                &.active {
+                    color: $accentColor;
+                }
+            }
+
+            .active-line {
+                cursor pointer
+                position: absolute;
+                bottom: 10%;
+                left: 0;
+                height: 80%;
+                border-radius: 4px;
+                background-color: $accentColor;
+                opacity: 10%;
+                transition: width $ease $duration, transform $ease $duration;
+            }
+        }
+    }
 
     @media (max-width: $MQMobile)
         #header
