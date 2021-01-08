@@ -10,7 +10,10 @@
                         <li v-for="item in $themeConfig.nav"
                             :key="item.text"
                             class="nav-item">
-                            <NavLink :link="item.link">{{ item.text | upperCase }}</NavLink>
+                            <NavLink :link="item.link"
+                                     :class="isArchives && item.link === '/' ? 'nav-link-active' : ''">
+                                {{ item.text | upperCase }}
+                            </NavLink>
                         </li>
                     </ul>
                     <SearchBox/>
@@ -47,6 +50,12 @@
                 links: null,
                 activeLine: null,
                 activeIndex: 0
+            }
+        },
+
+        computed: {
+            isArchives() {
+                return this.$themeConfig.categories.map(i => i.link).includes(this.$route.path);
             }
         },
 

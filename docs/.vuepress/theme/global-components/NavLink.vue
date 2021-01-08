@@ -53,6 +53,6 @@
         color #FFFFFF
 
     .nav-link
-        &:hover, &.router-link-active
+        &:hover, &.router-link-active, &-active
             color $accentColor
 </style>
