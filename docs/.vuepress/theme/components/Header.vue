@@ -69,22 +69,22 @@
                 text-transform uppercase
 
                 random(a, b)
-                    return math(math(0, "random")*(b - a + 1) + a, "floor")
+                    return math(math(0, "random") * (b - a + 1) + a, "floor")
 
                 @keyframes ani1 {
-                    $indent=20
+                    $indent = 20
                     for $index in 1..$indent {
                         {$index*100/$indent + "%"} {
-                            clip-path: inset(random(0, 100)*1px 0 random(0, 100)*1px 0)
+                            clip-path: inset(random(0, 100) * 1px 0 random(0, 100) * 1px 0)
                         }
                     }
                 }
 
                 @keyframes ani2 {
-                    $indent=20
+                    $indent = 20
                     for $index in 1..$indent {
                         {$index*100/$indent + "%"} {
-                            clip-path: inset(random(0, 100)*1px 0 random(0, 100)*1px 0)
+                            clip-path: inset(random(0, 100) * 1px 0 random(0, 100) * 1px 0)
                         }
                     }
                 }
