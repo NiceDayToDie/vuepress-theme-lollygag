@@ -61,32 +61,30 @@
 
         watch: {
             "$route.path": function (nv, ov) {
-                if (nv === "/") this.handleActiveLinkUpdate(0);
+                this.updateActiveLink(nv);
             }
         },
-        
+
         mounted() {
             const nav = document.querySelector(".nav-sections");
             this.menu = nav.querySelector(".menu");
             this.links = nav.querySelectorAll(".menu-item-link");
             this.activeLine = nav.querySelector(".active-line");
-            this.handleActiveLinkUpdate(0);
+            this.updateActiveLink(this.$route.path);
         },
 
         methods: {
-            setMenuLeftPosition(position) {
-                this.menu.scrollTo({left: position, behavior: "smooth"});
+            updateActiveLink(path) {
+                let index = this.$themeConfig.categories.findIndex(i => i.link === path);
+                if (index >= 0) this.handleActiveLinkUpdate(index);
             },
 
             checkMenuOverflow() {
                 const activeLink = this.links[this.activeIndex].getBoundingClientRect();
-                const offset = 30;
-
-                if (Math.floor(activeLink.right) > window.innerWidth) {
-                    this.setMenuLeftPosition(this.menu.scrollLeft + activeLink.right - window.innerWidth + offset);
-                } else if (activeLink.left < 0) {
-                    this.setMenuLeftPosition(this.menu.scrollLeft + activeLink.left - offset)
-                }
+                const mid = this.menu.offsetLeft + this.menu.clientWidth / 2;
+                const blockMid = activeLink.left + activeLink.width / 2;
+                const delta = blockMid - mid;
+                this.menu.scrollTo({left: this.menu.scrollLeft + delta, behavior: "smooth"});
             },
 
             moveActiveLine() {
@@ -101,7 +99,9 @@
             handleActiveLinkUpdate(index) {
                 this.activeIndex = index;
                 this.checkMenuOverflow();
-                this.moveActiveLine();
+                setTimeout(() => {
+                    this.moveActiveLine();
+                });
             },
 
             onNavClick(item, index) {
