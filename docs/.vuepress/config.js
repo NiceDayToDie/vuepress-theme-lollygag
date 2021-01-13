@@ -164,6 +164,30 @@ module.exports = {
             {text: "game", link: "/game"},
             {text: "movie", link: "/movie"},
             {text: "music", link: "/music"}
-        ]
+        ],
+        footer: {
+            contact: [
+                {
+                    type: "github",
+                    link: "https://github.com/NiceDayToDie/vuepress-theme-lollygag",
+                },
+                {
+                    type: "mail",
+                    link: "mailto:zane295384295@gmail.com",
+                }
+            ],
+            copyright: [
+                {
+                    text: "湘ICP备18022099号-1",
+                    link: "https://beian.miit.gov.cn/#/Integrated/index",
+                },
+                {
+                    text: "Powered by Lollygag",
+                },
+                {
+                    text: `Copyright © 2020-${new Date().getFullYear()} NiceDayToDie`
+                }
+            ]
+        }
     }
 }

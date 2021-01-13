@@ -143,7 +143,7 @@
             size 1000px, 40px
             margin auto
 
-            .title
+            /deep/ .title
                 font-size 30px
                 margin 0
                 letter-spacing 2px
@@ -297,7 +297,7 @@
     }
 
     @media (max-width: $MQMobile)
-        #header
+        header
             display none
 
         .header-wrapper

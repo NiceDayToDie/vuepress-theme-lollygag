@@ -52,7 +52,7 @@
     .music-player
         width 360px
         position fixed
-        bottom 0
+        bottom $footerHeight
         left 0
 
         @media (max-width: $MQMobile)
