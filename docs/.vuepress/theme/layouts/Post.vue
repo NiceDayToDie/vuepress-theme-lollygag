@@ -31,97 +31,14 @@
         },
 
         data() {
-            return {
-                musicList: [
-                    {
-                        title: "ROCKSTAR",
-                        artist: "DaBaby / Roddy Ricch",
-                        src: "http://music.163.com/song/media/outer/url?id=1441183869.mp3",
-                        pic: "http://p1.music.126.net/FLoKNesjpaotmN-qGj9m_A==/109951164912637120.jpg?param=130y130"
-                    },
-                    {
-                        title: "ROCKSTAR",
-                        artist: "DaBaby / Roddy Ricch",
-                        src: "http://music.163.com/song/media/outer/url?id=1441183869.mp3",
-                        pic: "http://p1.music.126.net/FLoKNesjpaotmN-qGj9m_A==/109951164912637120.jpg?param=130y130"
-                    },
-                    {
-                        title: "ROCKSTAR",
-                        artist: "DaBaby / Roddy Ricch",
-                        src: "http://music.163.com/song/media/outer/url?id=1441183869.mp3",
-                        pic: "http://p1.music.126.net/FLoKNesjpaotmN-qGj9m_A==/109951164912637120.jpg?param=130y130"
-                    },
-                    {
-                        title: "ROCKSTAR",
-                        artist: "DaBaby / Roddy Ricch",
-                        src: "http://music.163.com/song/media/outer/url?id=1441183869.mp3",
-                        pic: "http://p1.music.126.net/FLoKNesjpaotmN-qGj9m_A==/109951164912637120.jpg?param=130y130"
-                    },
-                    {
-                        title: "ROCKSTAR",
-                        artist: "DaBaby / Roddy Ricch",
-                        src: "http://music.163.com/song/media/outer/url?id=1441183869.mp3",
-                        pic: "http://p1.music.126.net/FLoKNesjpaotmN-qGj9m_A==/109951164912637120.jpg?param=130y130"
-                    },
-                    {
-                        title: "ROCKSTAR",
-                        artist: "DaBaby / Roddy Ricch",
-                        src: "http://music.163.com/song/media/outer/url?id=1441183869.mp3",
-                        pic: "http://p1.music.126.net/FLoKNesjpaotmN-qGj9m_A==/109951164912637120.jpg?param=130y130"
-                    },
-                    {
-                        title: "ROCKSTAR",
-                        artist: "DaBaby / Roddy Ricch",
-                        src: "http://music.163.com/song/media/outer/url?id=1441183869.mp3",
-                        pic: "http://p1.music.126.net/FLoKNesjpaotmN-qGj9m_A==/109951164912637120.jpg?param=130y130"
-                    },
-                    {
-                        title: "ROCKSTAR",
-                        artist: "DaBaby / Roddy Ricch",
-                        src: "http://music.163.com/song/media/outer/url?id=1441183869.mp3",
-                        pic: "http://p1.music.126.net/FLoKNesjpaotmN-qGj9m_A==/109951164912637120.jpg?param=130y130"
-                    },
-                    {
-                        title: "ROCKSTAR",
-                        artist: "DaBaby / Roddy Ricch",
-                        src: "http://music.163.com/song/media/outer/url?id=1441183869.mp3",
-                        pic: "http://p1.music.126.net/FLoKNesjpaotmN-qGj9m_A==/109951164912637120.jpg?param=130y130"
-                    },
-                    {
-                        title: "ROCKSTAR",
-                        artist: "DaBaby / Roddy Ricch",
-                        src: "http://music.163.com/song/media/outer/url?id=1441183869.mp3",
-                        pic: "http://p1.music.126.net/FLoKNesjpaotmN-qGj9m_A==/109951164912637120.jpg?param=130y130"
-                    },
-                    {
-                        title: "ROCKSTAR",
-                        artist: "DaBaby / Roddy Ricch",
-                        src: "http://music.163.com/song/media/outer/url?id=1441183869.mp3",
-                        pic: "http://p1.music.126.net/FLoKNesjpaotmN-qGj9m_A==/109951164912637120.jpg?param=130y130"
-                    },
-                    {
-                        title: "ROCKSTAR",
-                        artist: "DaBaby / Roddy Ricch",
-                        src: "http://music.163.com/song/media/outer/url?id=1441183869.mp3",
-                        pic: "http://p1.music.126.net/FLoKNesjpaotmN-qGj9m_A==/109951164912637120.jpg?param=130y130"
-                    },
-                    {
-                        title: "ROCKSTAR",
-                        artist: "DaBaby / Roddy Ricch",
-                        src: "http://music.163.com/song/media/outer/url?id=1441183869.mp3",
-                        pic: "http://p1.music.126.net/FLoKNesjpaotmN-qGj9m_A==/109951164912637120.jpg?param=130y130"
-                    },
-                    {
-                        title: "ROCKSTAR",
-                        artist: "DaBaby / Roddy Ricch",
-                        src: "http://music.163.com/song/media/outer/url?id=1441183869.mp3",
-                        pic: "http://p1.music.126.net/FLoKNesjpaotmN-qGj9m_A==/109951164912637120.jpg?param=130y130"
-                    },
-                ]
-            }
+            return {}
         },
 
-        computed: {},
+        computed: {
+            musicList() {
+                return this.$frontmatter.bgm;
+            }
+        },
 
         mounted() {},
 
