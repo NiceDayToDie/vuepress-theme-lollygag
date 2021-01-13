@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <div class="nav-sections">
+        <div class="nav-sections" v-show="isArchives">
             <div class="menu">
                 <div v-for="(item, index) in $themeConfig.categories"
                      :key="item.text"
