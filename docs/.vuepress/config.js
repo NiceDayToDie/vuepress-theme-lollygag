@@ -58,35 +58,38 @@ const blogConfig = [
             clientId: "",
             clientSecret: "",
         },
+        globalPagination: {
+            lengthPerPage: 2
+        },
         directories: [
             {
                 id: "code",
                 dirname: "_posts/code",
-                path: "/code",
+                path: "/code/",
                 itemPermalink: "/code/:year/:month/:day/:slug",
             },
             {
                 id: "game",
                 dirname: "_posts/game",
-                path: "/game",
+                path: "/game/",
                 itemPermalink: "/game/:year/:month/:day/:slug",
             },
             {
                 id: "life",
                 dirname: "_posts/life",
-                path: "/life",
+                path: "/life/",
                 itemPermalink: "/life/:year/:month/:day/:slug",
             },
             {
                 id: "movie",
                 dirname: "_posts/movie",
-                path: "/movie",
+                path: "/movie/",
                 itemPermalink: "/movie/:year/:month/:day/:slug",
             },
             {
                 id: "music",
                 dirname: "_posts/music",
-                path: "/music",
+                path: "/music/",
                 itemPermalink: "/music/:year/:month/:day/:slug",
             }
         ],
@@ -94,7 +97,7 @@ const blogConfig = [
             {
                 id: "archives",
                 keys: [],
-                path: "/archives/",
+                path: "/all/",
                 layout: "Layout"
             },
             {
@@ -154,16 +157,16 @@ module.exports = {
     ],
     themeConfig: {
         nav: [
-            {text: "archives", link: "/"},
+            {text: "archives", link: "/all"},
             {text: "tags", link: "/tags"}
         ],
         categories: [
-            {text: "all", link: "/"},
-            {text: "life", link: "/life"},
-            {text: "code", link: "/code"},
-            {text: "game", link: "/game"},
-            {text: "movie", link: "/movie"},
-            {text: "music", link: "/music"}
+            {text: "all", link: "/all/"},
+            {text: "life", link: "/life/"},
+            {text: "code", link: "/code/"},
+            {text: "game", link: "/game/"},
+            {text: "movie", link: "/movie/"},
+            {text: "music", link: "/music/"}
         ],
         footer: {
             contact: [

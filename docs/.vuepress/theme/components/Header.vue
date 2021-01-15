@@ -3,7 +3,7 @@
         <div id="header">
             <div class="header-wrapper">
                 <div class="title">
-                    <NavLink link="/" class="home-link" :data-text="$site.title">{{ $site.title }}</NavLink>
+                    <NavLink link="/all" class="home-link" :data-text="$site.title">{{ $site.title }}</NavLink>
                 </div>
                 <div class="header-right-wrap">
                     <ul v-if="$themeConfig.nav" class="nav">
@@ -11,7 +11,7 @@
                             :key="item.text"
                             class="nav-item">
                             <NavLink :link="item.link"
-                                     :class="isArchives && item.link === '/' ? 'nav-link-active' : ''">
+                                     :class="isArchives && item.link === '/all' ? 'nav-link-active' : ''">
                                 {{ item.text | upperCase }}
                             </NavLink>
                         </li>
@@ -55,7 +55,7 @@
 
         computed: {
             isArchives() {
-                return this.$themeConfig.categories.map(i => i.link).includes(this.$route.path);
+                return this.$themeConfig.categories.some(i => this.$route.path.indexOf(i.link) >= 0);
             }
         },
 
@@ -75,7 +75,7 @@
 
         methods: {
             updateActiveLink(path) {
-                let index = this.$themeConfig.categories.findIndex(i => i.link === path);
+                let index = this.$themeConfig.categories.findIndex(i => path.indexOf(i.link) >= 0);
                 if (index >= 0) this.handleActiveLinkUpdate(index);
             },
 
@@ -101,7 +101,7 @@
                 this.checkMenuOverflow();
                 setTimeout(() => {
                     this.moveActiveLine();
-                });
+                }, 100);
             },
 
             onNavClick(item, index) {
@@ -112,7 +112,7 @@
     }
 </script>
 
-<style scoped lang="stylus">
+<style lang="stylus">
     @require "~@/styles/mixins.styl"
 
     #header
@@ -143,7 +143,7 @@
             size 1000px, 40px
             margin auto
 
-            /deep/ .title
+            .title
                 font-size 30px
                 margin 0
                 letter-spacing 2px
@@ -244,6 +244,7 @@
         $ease = cubic-bezier(0.23, 1, 0.32, 1);
         $duration = 350ms;
 
+        z-index 12
         position: fixed;
         top: $headerHeight;
         left 0
