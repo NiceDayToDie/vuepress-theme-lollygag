@@ -1,10 +1,10 @@
 <template>
     <div id="global-layout">
         <Header/>
-        <!--<MobileHeader-->
-        <!--    :is-open="isMobileHeaderOpen"-->
-        <!--    @toggle-sidebar="isMobileHeaderOpen = !isMobileHeaderOpen"-->
-        <!--/>-->
+        <MobileHeader
+            :is-open="isMobileHeaderOpen"
+            @toggle-sidebar="isMobileHeaderOpen = !isMobileHeaderOpen"
+        />
         <div class="content-wrapper" @click="isMobileHeaderOpen = false">
             <DefaultGlobalLayout/>
         </div>
@@ -15,14 +15,14 @@
 <script>
     import GlobalLayout from "@app/components/GlobalLayout.vue"
     import Header from "@/components/Header.vue"
-    // import MobileHeader from "@/components/MobileHeader.vue"
+    import MobileHeader from "@/components/MobileHeader.vue"
     import Footer from "@/components/Footer.vue"
 
     export default {
         components: {
             DefaultGlobalLayout: GlobalLayout,
             Header,
-            // MobileHeader,
+            MobileHeader,
             Footer,
         },
 

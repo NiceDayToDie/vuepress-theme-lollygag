@@ -2,8 +2,8 @@
     <header>
         <div id="header">
             <div class="header-wrapper">
-                <div class="title">
-                    <NavLink link="/all" class="home-link" :data-text="$site.title">{{ $site.title }}</NavLink>
+                <div id="blog-title">
+                    <NavLink link="/all/" class="home-link" :data-text="$site.title">{{ $site.title }}</NavLink>
                 </div>
                 <div class="header-right-wrap">
                     <ul v-if="$themeConfig.nav" class="nav">
@@ -11,7 +11,7 @@
                             :key="item.text"
                             class="nav-item">
                             <NavLink :link="item.link"
-                                     :class="isArchives && item.link === '/all' ? 'nav-link-active' : ''">
+                                     :class="isArchives && item.link === '/all/' ? 'nav-link-active' : ''">
                                 {{ item.text | upperCase }}
                             </NavLink>
                         </li>
@@ -115,6 +115,60 @@
 <style lang="stylus">
     @require "~@/styles/mixins.styl"
 
+    #blog-title
+        font-size 30px
+        margin 0
+        letter-spacing 2px
+        display block
+        text-transform uppercase
+
+        random(a, b)
+            return math(math(0, "random") * (b - a + 1) + a, "floor")
+
+        @keyframes ani1 {
+            $indent = 20
+            for $index in 1..$indent {
+                {$index*100/$indent + "%"} {
+                    clip-path: inset(random(0, 100) * 1px 0 random(0, 100) * 1px 0)
+                }
+            }
+        }
+
+        @keyframes ani2 {
+            $indent = 20
+            for $index in 1..$indent {
+                {$index*100/$indent + "%"} {
+                    clip-path: inset(random(0, 100) * 1px 0 random(0, 100) * 1px 0)
+                }
+            }
+        }
+
+        a
+            color #FFFFFF
+            font-weight bold
+            text-decoration none
+
+        .home-link
+            position relative
+
+            &:before {
+                content: attr(data-text);
+                position: absolute;
+                text-shadow: 2px 0 red;
+                left: -2px;
+                clip-path: inset(0 0 0 0);
+                animation: ani2 2s infinite linear alternate-reverse;
+            }
+
+            &:after {
+                content: attr(data-text);
+                position: absolute;
+                text-shadow: -2px 0 blue;
+                left: 2px;
+                clip-path: inset(0 0 0 0);
+                animation: ani1 2s infinite linear alternate-reverse;
+            }
+
     #header
         top 0
         z-index 12
@@ -136,66 +190,11 @@
         &:hover
             box-shadow 0 5px 20px rgba(0, 0, 0, 0.08), 0 6px 6px rgba(0, 0, 0, 0.1)
 
-
         .header-wrapper
             display flex
             line-height 40px
             size 1000px, 40px
             margin auto
-
-            .title
-                font-size 30px
-                margin 0
-                letter-spacing 2px
-                display block
-                text-transform uppercase
-
-                random(a, b)
-                    return math(math(0, "random") * (b - a + 1) + a, "floor")
-
-                @keyframes ani1 {
-                    $indent = 20
-                    for $index in 1..$indent {
-                        {$index*100/$indent + "%"} {
-                            clip-path: inset(random(0, 100) * 1px 0 random(0, 100) * 1px 0)
-                        }
-                    }
-                }
-
-                @keyframes ani2 {
-                    $indent = 20
-                    for $index in 1..$indent {
-                        {$index*100/$indent + "%"} {
-                            clip-path: inset(random(0, 100) * 1px 0 random(0, 100) * 1px 0)
-                        }
-                    }
-                }
-
-                a
-                    color #FFFFFF
-                    font-weight bold
-                    text-decoration none
-
-                .home-link
-                    position relative
-
-                    &:before {
-                        content: attr(data-text);
-                        position: absolute;
-                        text-shadow: 2px 0 red;
-                        left: -2px;
-                        clip-path: inset(0 0 0 0);
-                        animation: ani2 2s infinite linear alternate-reverse;
-                    }
-
-                    &:after {
-                        content: attr(data-text);
-                        position: absolute;
-                        text-shadow: -2px 0 blue;
-                        left: 2px;
-                        clip-path: inset(0 0 0 0);
-                        animation: ani1 2s infinite linear alternate-reverse;
-                    }
 
             .header-right-wrap
                 flex 1

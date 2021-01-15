@@ -157,8 +157,8 @@ module.exports = {
     ],
     themeConfig: {
         nav: [
-            {text: "archives", link: "/all"},
-            {text: "tags", link: "/tags"}
+            {text: "archives", link: "/all/"},
+            {text: "tags", link: "/tags/"}
         ],
         categories: [
             {text: "all", link: "/all/"},
