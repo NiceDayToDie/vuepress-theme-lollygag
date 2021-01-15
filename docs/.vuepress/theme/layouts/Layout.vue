@@ -1,28 +1,34 @@
 <template>
     <article>
         <div>{{ $page.frontmatter.title }}</div>
-        <div class="card-wrapper">
+        <div id="card-wrapper" class="card-wrapper">
             <div v-for="i in 3" class="card animate__faster" @mouseover="onCardHover(i)" @mouseleave="onCardLeave(i)">
                 <div class="card-thumb">
-                    <img style="object-fit: cover" src='https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3363295869,2467511306&fm=26&gp=0.jpg' alt=''>
+                    <img style="object-fit: cover"
+                         src='https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3363295869,2467511306&fm=26&gp=0.jpg'
+                         alt=''>
                 </div>
                 <div class="card-content">
                     <div>
                         <h2>TitleTitleTitleTitleTitleTitle</h2>
                         <span class="card-date">31 March 2019</span>
                         <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel repudiandae eos provident fugit aliquid atque architecto fugiat a nesciunt aut, ipsa sed tenetur sint eligendi veniam iusto autem numquam? Distinctio!
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel repudiandae eos provident
+                            fugit aliquid atque architecto fugiat a nesciunt aut, ipsa sed tenetur sint eligendi veniam
+                            iusto autem numquam? Distinctio!
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-        <div>{{pages}}</div>
+        <div>{{ pages }}</div>
     </article>
 </template>
 
 
 <script>
+    import { replayAnimation } from "../components/util";
+
     export default {
         name: "Layout",
 
@@ -32,15 +38,25 @@
 
         computed: {
             pages() {
-                return this.$route.path === "/all/" ?this.$site.pages.filter(i => i.id) : this.$pagination.pages;
+                return this.$route.path === "/all/" ? this.$site.pages.filter(i => i.id) : this.$pagination.pages;
             }
         },
 
-        watch: {},
+        watch: {
+            "$route.path": function (nv, ov) {
+                this.init();
+            }
+        },
 
-        mounted() {},
+        mounted() {
+        },
 
         methods: {
+            init() {
+                const cardWrapper = document.getElementById("card-wrapper");
+                replayAnimation(cardWrapper);
+            },
+
             onCardHover(index) {
                 const ele = document.querySelectorAll(".card")[index - 1];
                 let animate = ele.getAttribute("data-animate") === "true";
@@ -76,9 +92,9 @@
     }
 
     .card-wrapper {
-        animation: focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+        animation: focus-in 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 
-        .card{
+        .card {
             cursor: pointer;
             max-width: $contentWidth;
             margin: auto;
@@ -86,7 +102,7 @@
             align-items: center;
             justify-content: center;
 
-            .card-thumb{
+            .card-thumb {
                 size: 200px 200px;
                 border-radius: 20px;
                 background-color: #ffffff;
@@ -94,13 +110,13 @@
                 box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
                 z-index: 2;
 
-                img{
+                img {
                     width: 100%;
                     height: 100%;
                 }
             }
 
-            .card-content{
+            .card-content {
                 box-sizing: border-box;
                 width: 100%;
                 min-height: 250px;
@@ -118,7 +134,7 @@
                     opacity 0.7
                 }
 
-                @media (max-width: $MQMobile){
+                @media (max-width: $MQMobile) {
                     width: 100%;
                     padding-left: 20px;
                     padding-top: 160px;
@@ -128,12 +144,12 @@
                 }
             }
 
-            .card-date{
+            .card-date {
                 font-size: 0.85rem;
                 font-weight: bold;
             }
 
-            @media (max-width: $MQMobile){
+            @media (max-width: $MQMobile) {
                 flex-direction: column;
             }
         }

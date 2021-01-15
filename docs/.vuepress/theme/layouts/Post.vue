@@ -1,7 +1,8 @@
 <template>
     <section>
         <Toc></Toc>
-        <VueAPlayer class="music-player"
+        <VueAPlayer v-if="musicList.length"
+                    class="music-player"
                     autoplay
                     listFolded
                     :volume="1"
@@ -36,11 +37,13 @@
 
         computed: {
             musicList() {
-                return this.$frontmatter.bgm;
+                return this.$frontmatter.bgm || [];
             }
         },
 
-        mounted() {},
+        mounted() {
+            console.log("aaa");
+        },
 
         methods: {}
     };

@@ -56,3 +56,9 @@ export function findContainerInVm(ref, vm, def) {
   }
   return container || def
 }
+
+export function replayAnimation(el) {
+  el.style.animation = "none";
+  el.offsetHeight;
+  el.style.animation = null;
+}

@@ -244,7 +244,7 @@
         $ease = cubic-bezier(0.23, 1, 0.32, 1);
         $duration = 350ms;
 
-        z-index 12
+        z-index 5
         position: fixed;
         top: $headerHeight;
         left 0
