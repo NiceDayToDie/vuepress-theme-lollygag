@@ -7,4 +7,8 @@ import animated from "animate.css";
 export default ({Vue, options, router, siteData}) => {
     Vue.use(animated);
     Vue.filter("upperCase", value => value.toUpperCase());
+
+    router.beforeEach((to, from, next) => {
+        if (to.path === "/") next("/all/"); else next();
+    });
 }
