@@ -1,6 +1,6 @@
 <template>
     <article>
-        <div>{{ $page.frontmatter.title }}</div>
+        <!--<div>{{ $page.frontmatter.title }}</div>-->
         <div id="card-wrapper" class="card-wrapper">
             <div v-for="i in 3" class="card animate__faster" @mouseover="onCardHover(i)" @mouseleave="onCardLeave(i)">
                 <div class="card-thumb">
@@ -10,13 +10,16 @@
                 </div>
                 <div class="card-content">
                     <div>
-                        <h2>TitleTitleTitleTitleTitleTitle</h2>
+                        <div class="title">TitleTitleTitleTitleTitleTitle</div>
                         <span class="card-date">31 March 2019</span>
-                        <p>
+                        <p class="abstract">
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel repudiandae eos provident
                             fugit aliquid atque architecto fugiat a nesciunt aut, ipsa sed tenetur sint eligendi veniam
                             iusto autem numquam? Distinctio!
                         </p>
+                        <div class="tags-wrapper">
+                            <div class="tag" v-for="i in 5">测试tag标签</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -95,9 +98,9 @@
         animation: focus-in 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 
         .card {
-            cursor: pointer;
+            cursor default
             max-width: $contentWidth;
-            margin: auto;
+            margin: 0 auto 2.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -124,14 +127,41 @@
                 align-items: center;
                 padding: 20px;
                 padding-left: 180px;
+                padding-bottom: 10px;
                 margin-left: -140px;
                 background-color: #ffffff;
                 z-index: 1;
                 border-radius: 20px;
                 box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 
-                &:hover {
-                    opacity 0.7
+                .title {
+                    cursor pointer
+                    font-size 1.65rem
+                    padding-bottom .3rem
+                    font-weight: 600;
+                    line-height: 1.25;
+                    margin-bottom 0.5rem
+                }
+
+                .tags-wrapper {
+                    u-flex row, flex-end, center
+                    flex-wrap wrap
+
+                    .tag {
+                        cursor pointer
+                        margin-left 10px
+                        margin-bottom 10px
+                        font-size 0.8rem
+                        font-weight bold
+                        padding 4px 10px
+                        border-radius 1em
+                        color: rgba($textColor, 0.6)
+                        background rgba($accentColor, 0.1)
+
+                        &:hover {
+                            background rgba($accentColor, 0.2)
+                        }
+                    }
                 }
 
                 @media (max-width: $MQMobile) {
