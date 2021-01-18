@@ -1,18 +1,15 @@
 <template>
     <div id="mobile-header">
         <div class="mobile-header-bar">
-            <div class="mobile-header-title">
-                <NavLink link="/" class="mobile-home-link">{{ $site.title }}</NavLink>
-                <component
-                    :is="isOpen ? 'XIcon' : 'MenuIcon'"
-                    @click="$emit('toggle-sidebar')"
-                />
+            <div id="blog-title">
+                <NavLink link="/all/" class="home-link" :data-text="$site.title">{{ $site.title }}</NavLink>
+                <component class="menu-btn" :is="isOpen ? 'XIcon' : 'MenuIcon'" @click="$emit('toggle-sidebar')"/>
             </div>
             <div class="mobile-menu-wrapper" :class="{ open: isOpen }">
                 <hr class="menu-divider"/>
-                <ul v-if="$themeConfig.nav" class="mobile-nav">
+                <ul v-if="navigators.length" class="mobile-nav">
                     <li
-                        v-for="item in $themeConfig.nav"
+                        v-for="item in navigators"
                         :key="item.text"
                         class="mobile-nav-item"
                     >
@@ -32,18 +29,28 @@
             MenuIcon,
             XIcon
         },
+
         props: {
             isOpen: {
                 type: Boolean,
                 required: true,
             },
         },
+
+        computed: {
+            navigators() {
+                let categories = this.$themeConfig.categories || [];
+                let nav = this.$themeConfig.nav.filter(i => {
+                    return !categories.map(c => c.link).includes(i.link)
+                });
+                return [...categories, ...nav];
+            }
+        },
     }
 </script>
 
 <style lang="stylus">
     .mobile-header-bar
-        font-family PT Serif, Serif
         z-index 12
         position fixed
         top 0
@@ -54,29 +61,29 @@
         box-shadow 0 5px 20px rgba(0, 0, 0, 0.03), 0 6px 6px rgba(0, 0, 0, 0.05)
         transition all 1s cubic-bezier(0.25, 0.8, 0.25, 1)
 
+        .menu-btn {
+            color #FFFFFF
+        }
+
     #mobile-header
-        .mobile-header-title
+        #blog-title
             display flex
             align-items center
             justify-content space-between
-            padding 1.2em
-
-            .mobile-home-link
-                text-decoration none
-                text-transform uppercase
-                font-family PT Serif, Serif
-                color #222
-                font-weight bold
+            padding 1.2rem
 
     .mobile-nav-item
         padding 10px 0
         list-style none
 
         a
+            width 100%
+            display inline-block
             text-decoration none
 
     .menu-divider
         margin 0
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
 
     .mobile-menu-wrapper
         max-height 0
