@@ -2,29 +2,31 @@
     <article>
         <!--<div>{{ $page.frontmatter.title }}</div>-->
         <div id="card-wrapper" class="card-wrapper">
-            <div v-for="i in 3" class="card animate__faster" @mouseover="onCardHover(i)" @mouseleave="onCardLeave(i)">
+            <div v-for="(item, index) in pages"
+                 :key="item.key"
+                 class="card animate__faster"
+                 @mouseover="onCardHover(index)"
+                 @mouseleave="onCardLeave(index)">
                 <div class="card-thumb">
-                    <img style="object-fit: cover"
-                         src='https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3363295869,2467511306&fm=26&gp=0.jpg'
-                         alt=''>
+                    <img style="object-fit: cover" :src="item.frontmatter.cover || defaultCover" alt="">
                 </div>
                 <div class="card-content">
-                    <div>
-                        <div class="title">TitleTitleTitleTitleTitleTitle</div>
-                        <span class="card-date">31 March 2019</span>
-                        <p class="abstract">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel repudiandae eos provident
-                            fugit aliquid atque architecto fugiat a nesciunt aut, ipsa sed tenetur sint eligendi veniam
-                            iusto autem numquam? Distinctio!
-                        </p>
+                    <div style="width: 0; flex: 1;">
+                        <div class="title" :title="item.title">{{ item.title }}</div>
+                        <span class="card-date">{{ item.frontmatter.date | dateFormat }}</span>
+                        <p class="abstract">{{ item.frontmatter.abstract }}</p>
                         <div class="tags-wrapper">
-                            <div class="tag" v-for="i in 5">测试tag标签</div>
+                            <div class="tag"
+                                 @click="$router.push(`/tags/${tag}`)"
+                                 v-for="tag in item.frontmatter.tags"
+                                 :key="tag">
+                                {{ tag }}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div>{{ pages }}</div>
     </article>
 </template>
 
@@ -36,12 +38,18 @@
         name: "Layout",
 
         data() {
-            return {}
+            return {
+                defaultCover: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1089874897,1268118658&fm=26&gp=0.jpg",
+            }
         },
 
         computed: {
+            isAll() {
+                return this.$route.path === "/all/";
+            },
+
             pages() {
-                return this.$route.path === "/all/" ? this.$site.pages.filter(i => i.id) : this.$pagination.pages;
+                return this.isAll ? this.$site.pages.filter(i => i.id) : this.$pagination.pages;
             }
         },
 
@@ -61,7 +69,7 @@
             },
 
             onCardHover(index) {
-                const ele = document.querySelectorAll(".card")[index - 1];
+                const ele = document.querySelectorAll(".card")[index];
                 let animate = ele.getAttribute("data-animate") === "true";
                 if (!animate) {
                     ele.classList.add("animate__animated", "animate__pulse");
@@ -73,7 +81,7 @@
             },
 
             onCardLeave(index) {
-                const ele = document.querySelectorAll(".card")[index - 1];
+                const ele = document.querySelectorAll(".card")[index];
                 ele.setAttribute("data-animate", "false");
             }
         }
@@ -141,6 +149,16 @@
                     font-weight: 600;
                     line-height: 1.25;
                     margin-bottom 0.5rem
+                    ellipsis()
+                }
+
+                .abstract {
+                    word-break: break-all;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 3;
+                    overflow: hidden;
                 }
 
                 .tags-wrapper {

@@ -19,6 +19,7 @@
     },
     "dependencies": {
         "animate.css": "^4.1.1",
+        "dayjs": "^1.10.3",
         "vue-aplayer": "^1.6.1",
         "vue-feather-icons": "^5.1.0"
     }

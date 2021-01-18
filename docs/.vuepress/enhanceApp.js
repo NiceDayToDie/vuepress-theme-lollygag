@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import animated from "animate.css";
 
 // Vue: VuePress 正在使用的 Vue 构造函数
@@ -7,6 +8,7 @@ import animated from "animate.css";
 export default ({Vue, options, router, siteData}) => {
     Vue.use(animated);
     Vue.filter("upperCase", value => value.toUpperCase());
+    Vue.filter("dateFormat", date => dayjs(date).format("YYYY-MM-DD"));
 
     router.beforeEach((to, from, next) => {
         if (to.path === "/") next("/all/"); else next();

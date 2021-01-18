@@ -55,7 +55,7 @@
 
         computed: {
             isArchives() {
-                return this.$themeConfig.categories.some(i => this.$route.path.indexOf(i.link) >= 0);
+                return this.$themeConfig.categories.some(i => this.$route.path.startsWith(i.link));
             }
         },
 
