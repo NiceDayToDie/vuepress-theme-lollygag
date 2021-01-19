@@ -8,7 +8,7 @@
                  @mouseover="onCardHover(index)"
                  @mouseleave="onCardLeave(index)">
                 <div class="card-thumb">
-                    <img style="object-fit: cover" :src="item.frontmatter.cover || defaultCover" alt="">
+                    <img style="object-fit: cover" :src="item.frontmatter.cover || $themeConfig.post.defaultCover" alt="">
                 </div>
                 <div class="card-content">
                     <div style="width: 0; flex: 1;">
@@ -18,7 +18,7 @@
                         <div class="tags-wrapper">
                             <div class="tag"
                                  @click="$router.push(`/tags/${tag}`)"
-                                 v-for="tag in item.frontmatter.tags"
+                                 v-for="tag in resolveTags(item.frontmatter.tags)"
                                  :key="tag">
                                 {{ tag }}
                             </div>
@@ -32,6 +32,7 @@
 
 
 <script>
+    import dayjs from "dayjs";
     import { replayAnimation } from "../components/util";
 
     export default {
@@ -39,7 +40,7 @@
 
         data() {
             return {
-                defaultCover: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1089874897,1268118658&fm=26&gp=0.jpg",
+
             }
         },
 
@@ -49,7 +50,11 @@
             },
 
             pages() {
-                return this.isAll ? this.$site.pages.filter(i => i.id) : this.$pagination.pages;
+                return this.isAll
+                    ? this.$site.pages.filter(i => i.id).sort((a, b) => {
+                        return dayjs(a.frontmatter.date).isAfter(dayjs(b.frontmatter.date)) ? -1 : 1;
+                    })
+                    : this.$pagination.pages;
             }
         },
 
@@ -83,6 +88,10 @@
             onCardLeave(index) {
                 const ele = document.querySelectorAll(".card")[index];
                 ele.setAttribute("data-animate", "false");
+            },
+
+            resolveTags(tags) {
+                return tags ? (Array.isArray(tags) ? tags : [tags]) : [];
             }
         }
     };
