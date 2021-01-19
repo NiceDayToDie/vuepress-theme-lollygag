@@ -28,6 +28,7 @@
                 </div>
             </div>
         </div>
+        <Pagination></Pagination>
     </article>
 </template>
 
@@ -35,9 +36,14 @@
 <script>
     import dayjs from "dayjs";
     import { replayAnimation } from "../components/util";
+    import Pagination from "../components/Pagination";
 
     export default {
         name: "Layout",
+
+        components: {
+            Pagination
+        },
 
         data() {
             return {
@@ -51,11 +57,21 @@
             },
 
             pages() {
-                return this.isAll
-                    ? this.$site.pages.filter(i => i.id).sort((a, b) => {
+                let list = [];
+                if (this.isAll) {
+                    list = this.$site.pages.filter(i => i.id).sort((a, b) => {
                         return dayjs(a.frontmatter.date).isAfter(dayjs(b.frontmatter.date)) ? -1 : 1;
                     })
-                    : this.$pagination.pages;
+                    // todo 判断是否超过总页数
+                    const pageSize = this.$themeConfig.post.postPerPage;
+                    const pageIndex = +this.$route.query.page || 1;
+                    let start = (pageIndex - 1) * pageSize;
+                    list = list.splice(start, pageSize);
+                    console.log(pageSize, pageIndex);
+                } else {
+                    list = this.$pagination.pages;
+                }
+                return list;
             }
         },
 
@@ -65,8 +81,7 @@
             }
         },
 
-        mounted() {
-        },
+        mounted() {},
 
         methods: {
             init() {
