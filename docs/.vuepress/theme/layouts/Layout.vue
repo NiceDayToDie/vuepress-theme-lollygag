@@ -5,6 +5,7 @@
             <div v-for="(item, index) in pages"
                  :key="item.key"
                  class="card animate__faster"
+                 @click="onCardClick(item.path)"
                  @mouseover="onCardHover(index)"
                  @mouseleave="onCardLeave(index)">
                 <div class="card-thumb">
@@ -17,7 +18,7 @@
                         <p class="abstract">{{ item.frontmatter.abstract }}</p>
                         <div class="tags-wrapper">
                             <div class="tag"
-                                 @click="$router.push(`/tags/${tag}`)"
+                                 @click.stop="$router.push(`/tags/${tag}`)"
                                  v-for="tag in resolveTags(item.frontmatter.tags)"
                                  :key="tag">
                                 {{ tag }}
@@ -73,6 +74,10 @@
                 replayAnimation(cardWrapper);
             },
 
+            onCardClick(path) {
+                this.$router.push(path);
+            },
+
             onCardHover(index) {
                 const ele = document.querySelectorAll(".card")[index];
                 let animate = ele.getAttribute("data-animate") === "true";
@@ -123,6 +128,7 @@
             justify-content: center;
 
             .card-thumb {
+                cursor pointer
                 size: 200px 200px;
                 border-radius: 20px;
                 background-color: #ffffff;
@@ -162,6 +168,7 @@
                 }
 
                 .abstract {
+                    cursor pointer
                     word-break: break-all;
                     text-overflow: ellipsis;
                     display: -webkit-box;
