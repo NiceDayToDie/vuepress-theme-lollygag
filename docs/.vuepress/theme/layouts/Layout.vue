@@ -28,7 +28,14 @@
                 </div>
             </div>
         </div>
-        <Pagination></Pagination>
+        <Pagination
+            v-if="totalPage > 1"
+            :total="totalPage"
+            :index.sync="pageIndex"
+            @on-page="onPageClick"
+            @on-prev="onPrevClick"
+            @on-next="onNextClick">
+        </Pagination>
     </article>
 </template>
 
@@ -47,7 +54,7 @@
 
         data() {
             return {
-
+                pageIndex: 1
             }
         },
 
@@ -56,18 +63,24 @@
                 return this.$route.path === "/all/";
             },
 
+            totalPage() {
+                const pageSize = this.$themeConfig.post.postPerPage;
+                return this.isAll ? Math.ceil(this.allPages.length / pageSize) : this.$pagination.length;
+            },
+
+            allPages() {
+                return this.$site.pages.filter(i => i.id).sort((a, b) => {
+                    return dayjs(a.frontmatter.date).isAfter(dayjs(b.frontmatter.date)) ? -1 : 1;
+                });
+            },
+
             pages() {
                 let list = [];
                 if (this.isAll) {
-                    list = this.$site.pages.filter(i => i.id).sort((a, b) => {
-                        return dayjs(a.frontmatter.date).isAfter(dayjs(b.frontmatter.date)) ? -1 : 1;
-                    })
-                    // todo 判断是否超过总页数
+                    list = JSON.parse(JSON.stringify(this.allPages));
                     const pageSize = this.$themeConfig.post.postPerPage;
-                    const pageIndex = +this.$route.query.page || 1;
-                    let start = (pageIndex - 1) * pageSize;
+                    let start = (this.pageIndex - 1) * pageSize;
                     list = list.splice(start, pageSize);
-                    console.log(pageSize, pageIndex);
                 } else {
                     list = this.$pagination.pages;
                 }
@@ -81,12 +94,20 @@
             }
         },
 
-        mounted() {},
+        mounted() {
+            this.init();
+        },
 
         methods: {
             init() {
                 const cardWrapper = document.getElementById("card-wrapper");
                 replayAnimation(cardWrapper);
+
+                this.pageIndex = +this.$route.query.page || 1;
+                if (this.pageIndex > this.totalPage && this.isAll) {
+                    this.pageIndex = this.totalPage;
+                    this.$router.push(`?page=${this.totalPage}`);
+                }
             },
 
             onCardClick(path) {
@@ -112,6 +133,18 @@
 
             resolveTags(tags) {
                 return tags ? (Array.isArray(tags) ? tags : [tags]) : [];
+            },
+
+            onPageClick() {
+                if (this.isAll) this.$router.push(`?page=${this.pageIndex}`);
+            },
+
+            onPrevClick() {
+                console.log("prev", this.pageIndex);
+            },
+
+            onNextClick() {
+                console.log("next", this.pageIndex);
             }
         }
     };

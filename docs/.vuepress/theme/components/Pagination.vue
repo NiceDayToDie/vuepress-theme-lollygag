@@ -1,12 +1,12 @@
 <template>
     <div class="pagination">
-        <a href="#">«</a>
-        <a href="#" class="selected">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">»</a>
+        <span @click="onPrevClick"
+              :class="['pagination-item', index === 1 ? 'disabled' : '']">«</span>
+        <span @click="onPageClick(i)"
+              :class="['pagination-item', i === index ? 'selected' : '']"
+              v-for="i in 5">{{ i }}</span>
+        <span @click="onNextClick"
+              :class="['pagination-item', index === total ? 'disabled' : '']">»</span>
     </div>
 </template>
 
@@ -15,10 +15,15 @@
         name: "Pagination",
 
         props: {
-            // isOpen: {
-            //     type: Boolean,
-            //     required: true,
-            // },
+            total: {
+                type: Number,
+                required: true
+            },
+
+            index: {
+                type: Number,
+                required: true
+            }
         },
 
         data() {
@@ -27,7 +32,22 @@
 
         computed: {},
 
-        methods: {},
+        methods: {
+            onPageClick(index) {
+                this.$emit("update:index", index);
+                this.$emit("on-page");
+            },
+
+            onPrevClick() {
+                if (this.index === 1) return;
+                this.$emit("on-prev");
+            },
+
+            onNextClick() {
+                if (this.index === this.total) return;
+                this.$emit("on-next");
+            }
+        }
     }
 </script>
 
@@ -35,17 +55,19 @@
     @require "~@/styles/mixins.styl"
 
     .pagination {
+        width: 100%;
         font-family: "Open Sans";
         text-align: center;
         padding: 20px 0;
 
-        a {
+        .pagination-item {
+            cursor: pointer;
             box-sizing: border-box;
             font-size: 0.8rem;
             width: 40px;
             height: 40px;
             background-color: transparent;
-            color: #222;
+            color: $textColor;
             border: 2px solid #ddd;
             display: inline-block;
             vertical-align: middle;
@@ -67,12 +89,20 @@
                 background-color: $accentColor;
                 border-color: $accentColor;
             }
+
+            &.disabled {
+                opacity 0.7
+                cursor not-allowed
+                color: $textColor;
+                background-color: transparent;
+                border-color: #ddd;
+            }
         }
     }
 
     @media (max-width: $MQMobile)
         .pagination {
-            a {
+            .pagination-item {
                 width: 35px;
                 height: 35px;
                 line-height: 30px;
