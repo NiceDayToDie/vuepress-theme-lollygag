@@ -75,7 +75,7 @@
 
         methods: {
             updateActiveLink(path) {
-                let index = this.$themeConfig.categories.findIndex(i => path.indexOf(i.link) >= 0);
+                let index = this.$themeConfig.categories.findIndex(i => path.startsWith(i.link));
                 if (index >= 0) this.handleActiveLinkUpdate(index);
             },
 

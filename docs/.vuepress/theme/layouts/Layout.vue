@@ -1,6 +1,8 @@
 <template>
-    <article>
-        <!--<div>{{ $page.frontmatter.title }}</div>-->
+    <article class="article-wrapper">
+        <span class="current-tag" v-if="!isArchives && $currentTags">
+            {{ $currentTags.key | upperCase }}
+        </span>
         <div id="card-wrapper" class="card-wrapper">
             <div v-for="(item, index) in pages"
                  :key="item.key"
@@ -18,10 +20,10 @@
                         <p class="abstract">{{ item.frontmatter.abstract }}</p>
                         <div class="tags-wrapper">
                             <div class="tag"
-                                 @click.stop="$router.push(`/tags/${tag}`)"
+                                 @click.stop="$router.push(`/tags/${tag}`).catch(err => {})"
                                  v-for="tag in resolveTags(item.frontmatter.tags)"
                                  :key="tag">
-                                {{ tag }}
+                                {{ tag | upperCase }}
                             </div>
                         </div>
                     </div>
@@ -56,6 +58,10 @@
         },
 
         computed: {
+            isArchives() {
+                return this.$page.frontmatter.layout === "Layout" && this.$themeConfig.categories.some(i => this.$route.path.startsWith(i.link));
+            },
+
             isAll() {
                 return this.$route.path === "/all/";
             },
@@ -152,7 +158,31 @@
         }
     }
 
+    .article-wrapper {
+        position: relative;
+        u-flex: column, flex-start, center
+    }
+
+    .current-tag {
+        position: absolute;
+        top: -60px;
+        font-weight: bold;
+        cursor: pointer;
+        padding: 8px 16px;
+        text-decoration: none;
+        white-space: nowrap;
+        color: #f22f27;
+        border-radius: 4px;
+        background-color: rgba(242,47,39,0.1);
+
+        @media (max-width: $MQMobile) {
+            position: static;
+            margin-bottom: 20px;
+        }
+    }
+
     .card-wrapper {
+        width: 100%;
         animation: focus-in 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 
         .card {
@@ -225,7 +255,7 @@
                         font-weight bold
                         padding 4px 10px
                         border-radius 1em
-                        color: rgba($textColor, 0.6)
+                        color: $accentColor;
                         background rgba($accentColor, 0.1)
 
                         &:hover {
