@@ -1,6 +1,8 @@
 <template>
     <section>
         <Toc></Toc>
+        <Content></Content>
+        <Comment></Comment>
         <VueAPlayer v-if="musicList.length"
                     class="music-player"
                     autoplay
@@ -11,8 +13,6 @@
                     theme="#f99793"
                     :music="musicList[0]"
                     :list="musicList"/>
-        <Content></Content>
-        <Comment></Comment>
     </section>
 </template>
 
@@ -41,9 +41,7 @@
             }
         },
 
-        mounted() {
-            console.log("aaa");
-        },
+        mounted() {},
 
         methods: {}
     };
