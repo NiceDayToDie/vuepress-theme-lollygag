@@ -193,7 +193,8 @@
         .header-wrapper
             display flex
             line-height 40px
-            size 1000px, 40px
+            max-width 1000px
+            height 40px
             margin auto
 
             .header-right-wrap
