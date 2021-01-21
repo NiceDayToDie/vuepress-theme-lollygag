@@ -31,10 +31,7 @@
         <Pagination
             v-if="totalPage > 1"
             :total="totalPage"
-            :index.sync="pageIndex"
-            @on-page="onPageClick"
-            @on-prev="onPrevClick"
-            @on-next="onNextClick">
+            :index.sync="pageIndex">
         </Pagination>
     </article>
 </template>
@@ -89,8 +86,11 @@
         },
 
         watch: {
-            "$route.path": function (nv, ov) {
-                this.init();
+            "$route": {
+                deep: true,
+                handler(nv, ov) {
+                    this.init();
+                }
             }
         },
 
@@ -103,7 +103,7 @@
                 const cardWrapper = document.getElementById("card-wrapper");
                 replayAnimation(cardWrapper);
 
-                this.pageIndex = +this.$route.query.page || 1;
+                this.pageIndex = this.isAll ? +this.$route.query.page || 1 : this.$pagination.paginationIndex + 1;
                 if (this.pageIndex > this.totalPage && this.isAll) {
                     this.pageIndex = this.totalPage;
                     this.$router.push(`?page=${this.totalPage}`);
@@ -133,18 +133,6 @@
 
             resolveTags(tags) {
                 return tags ? (Array.isArray(tags) ? tags : [tags]) : [];
-            },
-
-            onPageClick() {
-                if (this.isAll) this.$router.push(`?page=${this.pageIndex}`);
-            },
-
-            onPrevClick() {
-                console.log("prev", this.pageIndex);
-            },
-
-            onNextClick() {
-                console.log("next", this.pageIndex);
             }
         }
     };

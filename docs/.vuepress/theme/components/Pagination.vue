@@ -2,9 +2,9 @@
     <div class="pagination">
         <span @click="onPrevClick"
               :class="['pagination-item', index === 1 ? 'disabled' : '']">«</span>
-        <span @click="onPageClick(i)"
-              :class="['pagination-item', i === index ? 'selected' : '']"
-              v-for="i in 5">{{ i }}</span>
+        <span @click="onPageClick(base + i)"
+              :class="['pagination-item', (base + i) === index ? 'selected' : '']"
+              v-for="i in Math.min(total, 5)">{{ base + i }}</span>
         <span @click="onNextClick"
               :class="['pagination-item', index === total ? 'disabled' : '']">»</span>
     </div>
@@ -27,25 +27,50 @@
         },
 
         data() {
-            return {}
+            return {
+                base: 0
+            }
         },
 
-        computed: {},
+        computed: {
+            isAll() {
+                return this.$route.path === "/all/";
+            }
+        },
+
+        watch: {
+            "index": function (nv, ov) {
+                if (this.total > 5) {
+                    let delta = this.index - 3;
+                    if (delta < 0) {
+                        this.base = 0
+                    } else {
+                        if (delta > this.total - 5) {
+                            this.base = this.total - 5;
+                        } else {
+                            this.base = delta;
+                        }
+                    }
+                }
+            }
+        },
 
         methods: {
             onPageClick(index) {
                 this.$emit("update:index", index);
-                this.$emit("on-page");
+                if (this.isAll) this.$router.push(`?page=${index}`); else {
+                    this.$router.push(this.$pagination.getSpecificPageLink(index - 1));
+                }
             },
 
             onPrevClick() {
                 if (this.index === 1) return;
-                this.$emit("on-prev");
+                this.onPageClick(this.index - 1);
             },
 
             onNextClick() {
                 if (this.index === this.total) return;
-                this.$emit("on-next");
+                this.onPageClick(this.index + 1);
             }
         }
     }

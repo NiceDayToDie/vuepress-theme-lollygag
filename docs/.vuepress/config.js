@@ -1,6 +1,6 @@
 const path = require("path");
 
-const postPerPage = 2;
+const postPerPage = 6;
 
 const searchConfig = [
     "@vuepress/search",
