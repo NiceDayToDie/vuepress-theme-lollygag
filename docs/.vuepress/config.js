@@ -171,8 +171,7 @@ module.exports = {
             {text: "music", link: "/music/"}
         ],
         post: {
-            postPerPage: postPerPage,
-            defaultCover: "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1089874897,1268118658&fm=26&gp=0.jpg",
+            postPerPage: postPerPage
         },
         footer: {
             contact: [

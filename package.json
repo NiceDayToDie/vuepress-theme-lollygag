@@ -19,6 +19,7 @@
     },
     "dependencies": {
         "animate.css": "^4.1.1",
+        "css-doodle": "^0.14.2",
         "dayjs": "^1.10.3",
         "trianglify": "^4.1.1",
         "vue-aplayer": "^1.6.1",

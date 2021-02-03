@@ -11,7 +11,54 @@
                  @mouseover="onCardHover(index)"
                  @mouseleave="onCardLeave(index)">
                 <div class="card-thumb">
-                    <img style="object-fit: cover" :src="item.frontmatter.cover || $themeConfig.post.defaultCover" alt="">
+                    <img v-if="item.frontmatter.cover" style="object-fit: cover" :src="item.frontmatter.cover" alt="">
+                    <css-doodle v-else>
+                        :doodle {
+                            @size: 100%;
+                            @grid: 5;
+                        }
+
+                        margin: -.5px;
+                        transform: rotate(@r(0deg, 360deg, 90));
+                        border-width: 1px;
+                        border-style: @p(double, dotted, dashed, solid);
+                        border-color: transparent;
+
+                        @random {
+                            border-top-color: @p(#60569e, #e6437d, #ebbf4d);
+                        }
+                        @random {
+                            border-left-color: @p(#60569e, #e6437d, #ebbf4d);
+                        }
+                        @random {
+                            border-width: @p(3px, 4px);
+                            border-style: double;
+                        }
+                        @random {
+                            border-radius: @p('0 0 0 100%', '100% 0 0 0', 0, 0);
+                        }
+                        :nth-child(19n):after {
+                            content: '~~~';
+                            color: transparent;
+                            line-height: 0;
+                            position: absolute;
+                            transform: scale(@r(.5, .7)) rotate(@r(360deg));
+                            text-decoration: line-through wavy
+                            @p(#60569e, #e6437d, #ebbf4d);
+                        }
+                        @random {
+                            :after {
+                                content: '';
+                                background: @p(#60569e, #e6437d, #ebbf4d);
+                                transform: rotate(@r(360deg));
+                                @size: 30%;
+                                @shape: @p(
+                                circle, diamond, star,
+                                triangle, pentagon, rhombus
+                            );
+                            }
+                        }
+                    </css-doodle>
                 </div>
                 <div class="card-content">
                     <div style="width: 0; flex: 1;">
@@ -40,6 +87,7 @@
 
 
 <script>
+    import "css-doodle"
     import dayjs from "dayjs";
     import Pagination from "../components/Pagination";
 
@@ -181,7 +229,7 @@
                 cursor pointer
                 size: 200px 200px;
                 border-radius: 20px;
-                background-color: #ffffff;
+                background-color: $headerBgColor;
                 overflow: hidden;
                 box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
                 z-index: 2;
