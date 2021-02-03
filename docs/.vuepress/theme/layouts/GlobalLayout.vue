@@ -34,8 +34,7 @@
         },
 
         watch: {
-            "$route": {
-                deep: true,
+            "$route.path": {
                 handler(nv, ov) {
                     this.init();
                 }

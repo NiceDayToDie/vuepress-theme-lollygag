@@ -1,5 +1,8 @@
 <template>
     <section>
+        <div class="banner">
+            <svg id="banner-bg"></svg>
+        </div>
         <Toc></Toc>
         <div id="fade-wrapper">
             <Content></Content>
@@ -20,9 +23,11 @@
 
 <script>
     import Toc from "@/components/Toc.vue";
-    import {Comment} from "@vuepress/plugin-blog/lib/client/components";
+    import { Comment } from "@vuepress/plugin-blog/lib/client/components";
     import VueAPlayer from "vue-aplayer";
+
     VueAPlayer.disableVersionBadge = true;
+    import trianglify from "trianglify";
 
     export default {
         name: "Post",
@@ -43,7 +48,12 @@
             }
         },
 
-        mounted() {},
+        mounted() {
+            trianglify({
+                width: window.innerWidth,
+                height: 300
+            }).toSVG(document.getElementById("banner-bg"));
+        },
 
         methods: {}
     };
@@ -51,6 +61,20 @@
 
 <style scoped lang="stylus">
     @require "~@/styles/mixins.styl"
+
+    .banner {
+        width 100%
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-image: linear-gradient(rgba(111, 111, 111, 1), rgba(255, 255, 255, 0));
+
+        svg {
+            filter: blur(1px);
+            mix-blend-mode overlay;
+        }
+    }
 
     .music-player
         width 360px

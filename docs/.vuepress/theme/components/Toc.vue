@@ -141,7 +141,7 @@
         max-height 100vh
         max-width 220px
         overflow-y auto
-        padding-top 5rem
+        padding-top 5.1rem
         top 0
         right 10px
         box-sizing border-box
