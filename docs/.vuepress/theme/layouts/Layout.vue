@@ -1,5 +1,5 @@
 <template>
-    <article class="article-wrapper">
+    <article id="fade-wrapper" class="article-wrapper">
         <span class="current-tag" v-if="!isArchives && $currentTags">
             {{ $currentTags.key | upperCase }}
         </span>
@@ -41,7 +41,6 @@
 
 <script>
     import dayjs from "dayjs";
-    import { replayAnimation } from "../components/util";
     import Pagination from "../components/Pagination";
 
     export default {
@@ -106,9 +105,6 @@
 
         methods: {
             init() {
-                const cardWrapper = document.getElementById("card-wrapper");
-                replayAnimation(cardWrapper);
-
                 this.pageIndex = this.isAll ? +this.$route.query.page || 1 : this.$pagination.paginationIndex + 1;
                 if (this.pageIndex > this.totalPage && this.isAll) {
                     this.pageIndex = this.totalPage;
@@ -147,17 +143,6 @@
 <style scoped lang="stylus">
     @require "~@/styles/mixins.styl"
 
-    @keyframes focus-in {
-        0% {
-            filter: blur(12px);
-            opacity: 0;
-        }
-        100% {
-            filter: blur(0px);
-            opacity: 1;
-        }
-    }
-
     .article-wrapper {
         position: relative;
         u-flex: column, flex-start, center
@@ -183,7 +168,6 @@
 
     .card-wrapper {
         width: 100%;
-        animation: focus-in 0.7s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 
         .card {
             cursor default

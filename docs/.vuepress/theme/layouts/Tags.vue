@@ -1,5 +1,5 @@
 <template>
-    <div class="tags-list">
+    <div id="fade-wrapper" class="tags-list">
         <router-link class="tag-item" v-for="tag in tags" :key="tag.name" :to="tag.path">
             {{ tag.name | upperCase }} ({{ tag.pages.length }})
         </router-link>

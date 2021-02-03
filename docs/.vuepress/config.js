@@ -191,10 +191,10 @@ module.exports = {
                     link: "https://beian.miit.gov.cn/#/Integrated/index",
                 },
                 {
-                    text: "Powered by Lollygag",
+                    text: "Powered by Vuepress",
                 },
                 {
-                    text: `Copyright © 2020-${new Date().getFullYear()} NiceDayToDie`
+                    text: `Copyright © 2020-${new Date().getFullYear()} Lollygag`
                 }
             ]
         }

@@ -1,8 +1,10 @@
 <template>
     <section>
         <Toc></Toc>
-        <Content></Content>
-        <Comment></Comment>
+        <div id="fade-wrapper">
+            <Content></Content>
+            <Comment></Comment>
+        </div>
         <VueAPlayer v-if="musicList.length"
                     class="music-player"
                     autoplay
