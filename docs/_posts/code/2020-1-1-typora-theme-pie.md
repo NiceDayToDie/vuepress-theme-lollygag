@@ -22,14 +22,31 @@
 ---
 
 # typora-theme-pie
+<Mark 
+    title="内容主标题" 
+    subtitle="This is the subtitle"
+    cover="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/tenEL3u6KlWW9F98Sx5CQbbl39J.jpg"
+    bg="https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/fRYwdeNjMqC30EhofPx5PlDpdun.jpg"
+    review="sssss"
+    :grade="8"
+    :link="{
+        mc: 'sss',
+        ign: 'sss',
+        douban: 'sss',
+        imdb: 'sss',
+        ps: 'sss',
+        steam: 'sss',
+    }"
+/>
 > 一个`typora`主题，具有[少数派](http://www.sspai.com)和 [Misty](https://github.com/etigerstudio/typora-misty-theme) 的风格。
 [English](2020-1-1-typora-theme-pie.md) | 简体中文  
 > 馅饼里有非常多的馅料馅饼里有非常多的馅料馅饼里有非常多的馅料馅饼里有非常多的馅料馅饼里有非常多的馅料馅饼里有非常多的馅料馅饼里有非常多的馅料馅饼里有非常多的馅料馅饼里有非常多的馅料馅饼里有非常多的馅料馅饼里有非常多的馅料  
 > 馅饼里有非常多的馅料馅饼里有非常多的馅料馅饼里有非常多的馅料馅饼里有非常多的馅料馅饼里有非常多的馅料馅饼里有非常多的馅料馅饼里有非常多的馅料馅饼里有非常多的馅料馅饼里有非常多的馅料馅饼里有非常多的馅料馅饼里有非常多的馅料
 > > dddd
+
 ## 为什么叫 `pie`
 `pie` 的意思是 “馅饼” ，馅饼里有非常多的馅料，而这个主题正是由多种 `馅料` 组合而成的。下面是几处灵感来源，首先对你们表示感谢
-- :ghost: ​[少数派](http://www.sspai.com) 给我提供了颜色灵感和`引用块`的灵感
+- :100: ​[少数派](http://www.sspai.com) 给我提供了颜色灵感和`引用块`的灵感
 - :tada: [typora-misty-theme](https://github.com/etigerstudio/typora-misty-theme) 给我提供了`标题` 的灵感
 - :santa: [typora-vue-theme](https://github.com/blinkfox/typora-vue-theme) 给我提供了字体的灵感，事实上我用的就是它所使用的字体
 - :beers: ​[material-palenight](https://codemirror.net/theme/material-palenight.css) 是我最喜欢的代码主题，我也将其加入了进来
