@@ -28,7 +28,7 @@
     cover="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/tenEL3u6KlWW9F98Sx5CQbbl39J.jpg"
     bg="https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/fRYwdeNjMqC30EhofPx5PlDpdun.jpg"
     review="sssss"
-    :grade="8"
+    :grade="8.5"
     :link="{
         mc: 'sss',
         ign: 'sss',

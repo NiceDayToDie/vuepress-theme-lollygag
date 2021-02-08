@@ -10,7 +10,7 @@
 
         </div>
         <div class="grade">
-
+            <Grade :grade="grade" :size="80"></Grade>
         </div>
         <!--<div>{{title}}</div>-->
         <!--<div>{{subtitle}}</div>-->
@@ -20,8 +20,14 @@
 </template>
 
 <script>
+    import Grade from "../components/Grade";
+
     export default {
         name: "Mark",
+
+        components: {
+            Grade
+        },
 
         props: {
             title: {
@@ -98,6 +104,16 @@
                 border-radius: 6px;
                 object-fit: cover;
             }
+        }
+
+        .info {
+
+        }
+
+        .grade {
+            position: absolute;
+            top: 20px;
+            right: 24px;
         }
     }
 </style>
