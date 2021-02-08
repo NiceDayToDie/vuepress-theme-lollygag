@@ -18,6 +18,7 @@
                 type: Number,
                 default: 100
             },
+
             grade: {
                 required: true,
                 type: Number,

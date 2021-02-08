@@ -7,13 +7,24 @@
             <img :src="cover" alt="">
         </div>
         <div class="info">
-
+            <div class="title-wrapper">
+                <div class="title">{{title}}</div>
+                <div class="subtitle">{{subtitle}}</div>
+            </div>
+            <div class="link-wrapper">
+                <a v-for="key in linkKeys"
+                   :key="key"
+                   :href="link[key]"
+                   :class="`link-icon ${key}`"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                </a>
+            </div>
         </div>
         <div class="grade">
             <Grade :grade="grade" :size="80"></Grade>
         </div>
-        <!--<div>{{title}}</div>-->
-        <!--<div>{{subtitle}}</div>-->
+
         <!--<div>{{grade}}</div>-->
         <!--<div>{{link}}</div>-->
     </div>
@@ -56,6 +67,12 @@
 
         data() {
             return {}
+        },
+
+        computed: {
+            linkKeys() {
+                return Object.keys(this.link);
+            }
         },
 
         watch: {},
@@ -107,7 +124,60 @@
         }
 
         .info {
+            flex: 1;
+            size: 0, 100%;
+            margin-left: 16px;
 
+            .title-wrapper {
+                width 80%;
+
+                .title {
+                    font-size: 24px;
+                    font-weight: bold;
+                    margin-bottom: 6px;
+                    ellipsis();
+                }
+
+                .subtitle {
+                    color: #c4c4c4;
+                    margin-bottom: 10px;
+                    ellipsis()
+                }
+            }
+
+            .link-wrapper {
+                u-flex: row, flex-start, center;
+
+                .link-icon {
+                    size 24px 24px;
+                    margin-right 12px;
+                    display inline-block;
+                }
+
+                .mc {
+                    bg-img("~@/assets/icons/mc.svg");
+                }
+
+                .ign {
+                    bg-img("~@/assets/icons/ign.svg");
+                }
+
+                .douban {
+                    bg-img("~@/assets/icons/douban.svg");
+                }
+
+                .imdb {
+                    bg-img("~@/assets/icons/imdb.svg");
+                }
+
+                .ps {
+                    bg-img("~@/assets/icons/ps.svg");
+                }
+
+                .steam {
+                    bg-img("~@/assets/icons/steam.svg");
+                }
+            }
         }
 
         .grade {
