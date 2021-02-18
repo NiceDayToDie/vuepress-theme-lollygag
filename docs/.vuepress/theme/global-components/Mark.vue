@@ -69,24 +69,30 @@
         },
 
         data() {
-            return {}
+            return {
+                gradeSize: 100
+            }
         },
 
         computed: {
             linkKeys() {
                 return Object.keys(this.link);
-            },
-
-            gradeSize() {
-                return window.matchMedia("(max-width: 769px)").matches ? 70 : 100;
             }
         },
 
         watch: {},
 
-        mounted() {},
+        mounted() {
+            const mql = window.matchMedia("(max-width: 769px)");
+            this.handleMobile(mql);
+            mql.addEventListener("change", this.handleMobile);
+        },
 
-        methods: {}
+        methods: {
+            handleMobile(e) {
+                this.gradeSize = e.matches ? 70 : 100;
+            }
+        }
     }
 </script>
 

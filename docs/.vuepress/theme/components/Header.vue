@@ -291,7 +291,7 @@
                 height: 80%;
                 border-radius: 4px;
                 background-color: $accentColor;
-                opacity: 10%;
+                opacity: 0.1;
                 transition: width $ease $duration, transform $ease $duration;
             }
         }

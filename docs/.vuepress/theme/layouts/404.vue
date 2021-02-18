@@ -16,7 +16,7 @@
 
 <script>
     export default {
-        name: "404",
+        name: "pageNotFound",
 
         data() {
             return {}

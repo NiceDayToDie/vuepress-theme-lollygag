@@ -8,38 +8,38 @@
             <Content></Content>
             <Comment></Comment>
         </div>
-        <VueAPlayer v-if="musicList.length"
-                    class="music-player"
-                    autoplay
-                    listFolded
-                    :volume="1"
-                    repeat="list"
-                    listMaxHeight="160px"
-                    theme="#f99793"
-                    :music="musicList[0]"
-                    :list="musicList"/>
+        <component v-if="VueAPlayer && musicList.length"
+                   :is="VueAPlayer"
+                   class="music-player"
+                   autoplay
+                   listFolded
+                   :volume="1"
+                   repeat="list"
+                   listMaxHeight="160px"
+                   theme="#f99793"
+                   :music="musicList[0]"
+                   :list="musicList"/>
     </section>
 </template>
 
 <script>
     import Toc from "@/components/Toc.vue";
     import { Comment } from "@vuepress/plugin-blog/lib/client/components";
-    import VueAPlayer from "vue-aplayer";
 
-    VueAPlayer.disableVersionBadge = true;
-    import trianglify from "trianglify";
+    import trianglify from "@victorioberra/trianglify-browser";
 
     export default {
         name: "Post",
 
         components: {
             Toc,
-            VueAPlayer,
             Comment,
         },
 
         data() {
-            return {}
+            return {
+                VueAPlayer: null
+            }
         },
 
         computed: {
@@ -53,6 +53,11 @@
                 width: window.innerWidth,
                 height: 300
             }).toSVG(document.getElementById("banner-bg"));
+
+            import("vue-aplayer").then(module => {
+                this.VueAPlayer = module.default;
+                this.VueAPlayer.disableVersionBadge = true;
+            });
         },
 
         methods: {}

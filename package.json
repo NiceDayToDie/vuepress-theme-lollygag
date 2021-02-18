@@ -18,10 +18,10 @@
         "vuepress-plugin-smooth-scroll": "0.0.10"
     },
     "dependencies": {
+        "@victorioberra/trianglify-browser": "^4.1.1",
         "animate.css": "^4.1.1",
         "css-doodle": "^0.14.2",
         "dayjs": "^1.10.3",
-        "trianglify": "^4.1.1",
         "vue-aplayer": "^1.6.1",
         "vue-feather-icons": "^5.1.0"
     }

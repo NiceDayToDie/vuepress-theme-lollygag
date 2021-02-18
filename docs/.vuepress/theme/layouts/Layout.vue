@@ -87,7 +87,6 @@
 
 
 <script>
-    import "css-doodle"
     import dayjs from "dayjs";
     import Pagination from "../components/Pagination";
 
@@ -148,6 +147,7 @@
         },
 
         mounted() {
+            import("css-doodle");
             this.init();
         },
 
