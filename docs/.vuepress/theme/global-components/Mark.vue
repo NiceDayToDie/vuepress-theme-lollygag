@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="grade">
-            <Grade :grade="grade" :size="100"></Grade>
+            <Grade :grade="grade" :size="gradeSize"></Grade>
         </div>
     </div>
 </template>
@@ -75,13 +75,16 @@
         computed: {
             linkKeys() {
                 return Object.keys(this.link);
+            },
+
+            gradeSize() {
+                return window.matchMedia("(max-width: 769px)").matches ? 70 : 100;
             }
         },
 
         watch: {},
 
-        mounted() {
-        },
+        mounted() {},
 
         methods: {}
     }
@@ -117,7 +120,12 @@
         }
 
         .cover {
+            margin-right: 16px;
             size: 200px, 300px;
+
+            @media (max-width: $MQMobile) {
+                display none;
+            }
 
             img {
                 size: 100%;
@@ -129,24 +137,32 @@
         .info {
             flex: 1;
             size: 0, 100%;
-            margin-left: 16px;
             u-flex: column, flex-start, flex-start;
 
             .title-wrapper {
-                width 77%;
+                width 75%;
 
                 .title {
                     font-size: 26px;
                     font-weight: bold;
                     margin-bottom: 8px;
                     ellipsis();
+
+                    @media (max-width: $MQMobile) {
+                        font-size: 22px;
+                        margin-bottom: 6px;
+                    }
                 }
 
                 .subtitle {
                     color: #c4c4c4;
                     font-size: 18px;
                     margin-bottom: 12px;
-                    ellipsis()
+                    ellipsis();
+
+                    @media (max-width: $MQMobile) {
+                        font-size: 16px;
+                    }
                 }
             }
 
@@ -157,6 +173,11 @@
                     size 26px 26px;
                     margin-right 14px;
                     display inline-block;
+
+                    @media (max-width: $MQMobile) {
+                        size 18px 18px;
+                        margin-right 10px;
+                    }
                 }
 
                 .mc {
@@ -200,6 +221,10 @@
                 line-height: 1.5;
                 overflow-y: scroll;
                 u-flex: row, flex-start, center;
+
+                @media (max-width: $MQMobile) {
+                    font-size: 16px;
+                }
 
                 &::-webkit-scrollbar {
                     display: none;
