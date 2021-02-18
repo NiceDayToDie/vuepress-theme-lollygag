@@ -127,6 +127,7 @@ const mediumZoomConfig = [
 ];
 
 module.exports = {
+    base: "/vuepress-theme-lollygag/",
     title: "Lollygag",
     locales: {
         "/": {
