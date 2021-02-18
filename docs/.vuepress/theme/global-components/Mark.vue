@@ -20,13 +20,13 @@
                    rel="noopener noreferrer">
                 </a>
             </div>
+            <div class="review-wrapper">
+                <div class="review-content">{{review}}</div>
+            </div>
         </div>
         <div class="grade">
-            <Grade :grade="grade" :size="80"></Grade>
+            <Grade :grade="grade" :size="100"></Grade>
         </div>
-
-        <!--<div>{{grade}}</div>-->
-        <!--<div>{{link}}</div>-->
     </div>
 </template>
 
@@ -62,6 +62,9 @@
             },
             link: {
                 type: Object
+            },
+            review: {
+                type: String
             }
         },
 
@@ -127,20 +130,22 @@
             flex: 1;
             size: 0, 100%;
             margin-left: 16px;
+            u-flex: column, flex-start, flex-start;
 
             .title-wrapper {
-                width 80%;
+                width 77%;
 
                 .title {
-                    font-size: 24px;
+                    font-size: 26px;
                     font-weight: bold;
-                    margin-bottom: 6px;
+                    margin-bottom: 8px;
                     ellipsis();
                 }
 
                 .subtitle {
                     color: #c4c4c4;
-                    margin-bottom: 10px;
+                    font-size: 18px;
+                    margin-bottom: 12px;
                     ellipsis()
                 }
             }
@@ -149,8 +154,8 @@
                 u-flex: row, flex-start, center;
 
                 .link-icon {
-                    size 24px 24px;
-                    margin-right 12px;
+                    size 26px 26px;
+                    margin-right 14px;
                     display inline-block;
                 }
 
@@ -176,6 +181,37 @@
 
                 .steam {
                     bg-img("~@/assets/icons/steam.svg");
+                }
+
+                .netease {
+                    bg-img("~@/assets/icons/netease.svg");
+                }
+
+                .spotify {
+                    bg-img("~@/assets/icons/spotify.svg");
+                }
+            }
+
+            .review-wrapper {
+                flex: 1;
+                size: 100%, 0;
+                margin-top: 16px;
+                font-size: 18px;
+                line-height: 1.5;
+                overflow-y: scroll;
+                u-flex: row, flex-start, center;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
+                .review-content {
+                    width: 100%;
+                    padding: 16px 0;
+                    max-height: 100%;
+                    display: table-cell;
+                    vertical-align: middle;
+                    text-align center;
                 }
             }
         }

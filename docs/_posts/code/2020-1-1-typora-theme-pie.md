@@ -27,7 +27,7 @@
     subtitle="This is the subtitle"
     cover="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/tenEL3u6KlWW9F98Sx5CQbbl39J.jpg"
     bg="https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/fRYwdeNjMqC30EhofPx5PlDpdun.jpg"
-    review="sssss"
+    review="的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达的萨达萨达"
     :grade="8.5"
     :link="{
         mc: 'sss',
@@ -36,6 +36,8 @@
         imdb: 'sss',
         ps: 'sss',
         steam: 'sss',
+        netease: 'sss',
+        spotify: 'sss'
     }"
 />
 > 一个`typora`主题，具有[少数派](http://www.sspai.com)和 [Misty](https://github.com/etigerstudio/typora-misty-theme) 的风格。
