@@ -56,10 +56,10 @@ const blogConfig = [
         comment: {
             service: "vssue",
             // fill your own information below
-            owner: "",
-            repo: "",
-            clientId: "",
-            clientSecret: ""
+            owner: "NiceDayToDie",
+            repo: "vuepress-theme-lollygag",
+            clientId: "811e5c4171199f1c5ddb",
+            clientSecret: "201f488b884c6b366a36194bcc3dfff97a502d68"
         },
         globalPagination: {
             lengthPerPage: postPerPage

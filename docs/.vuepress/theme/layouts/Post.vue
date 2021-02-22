@@ -40,7 +40,7 @@
             return {
                 VueAPlayer: null,
                 // TODO set your own cors proxy
-                proxy: url => `${url}`
+                proxy: url => `https://demo.lollygag.workers.dev/?${url}`
             }
         },
 
