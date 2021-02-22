@@ -1,6 +1,6 @@
 const path = require("path");
 
-const postPerPage = 6;
+const postPerPage = 5;
 
 const searchConfig = [
     "@vuepress/search",
@@ -186,10 +186,6 @@ module.exports = {
                 }
             ],
             copyright: [
-                {
-                    text: "湘ICP备18022099号-1",
-                    link: "https://beian.miit.gov.cn/#/Integrated/index",
-                },
                 {
                     text: "Powered by Vuepress",
                 },

@@ -12,7 +12,7 @@
                  @mouseleave="onCardLeave(index)">
                 <div class="card-thumb">
                     <img v-if="item.frontmatter.cover" style="object-fit: cover" :src="item.frontmatter.cover" alt="">
-                    <css-doodle v-else>
+                    <component v-if="cssDoodle && !item.frontmatter.cover" :is="cssDoodle">
                         :doodle {
                             @size: 100%;
                             @grid: 5;
@@ -58,7 +58,7 @@
                             );
                             }
                         }
-                    </css-doodle>
+                    </component>
                 </div>
                 <div class="card-content">
                     <div style="width: 0; flex: 1;">
@@ -99,7 +99,8 @@
 
         data() {
             return {
-                pageIndex: 1
+                pageIndex: 1,
+                cssDoodle: null
             }
         },
 
@@ -147,7 +148,9 @@
         },
 
         mounted() {
-            import("css-doodle");
+            import("css-doodle").then(module => {
+                this.cssDoodle = "css-doodle";
+            });
             this.init();
         },
 
