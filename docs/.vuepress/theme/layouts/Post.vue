@@ -6,7 +6,7 @@
         <Toc></Toc>
         <div id="fade-wrapper">
             <Content></Content>
-            <Comment></Comment>
+            <Vssue :title="this.$page.title"/>
         </div>
         <component v-if="VueAPlayer && musicList.length"
                    :is="VueAPlayer"

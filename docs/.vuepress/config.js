@@ -53,13 +53,6 @@ const containerConfig = [
 const blogConfig = [
     "@vuepress/blog",
     {
-        comment: {
-            service: "vssue",
-            owner: "",
-            repo: "",
-            clientId: "",
-            clientSecret: "",
-        },
         globalPagination: {
             lengthPerPage: postPerPage
         },
@@ -123,7 +116,20 @@ const mediumZoomConfig = [
             background: "#000000",
             scrollOffset: 0,
         },
-    },
+    }
+];
+
+const vssueConfig = [
+    "@vssue/vuepress-plugin-vssue",
+    {
+        platform: "github",
+        // fill your own information below
+        owner: "",
+        repo: "",
+        clientId: "",
+        clientSecret: "",
+        proxy: url => `${url}`
+    }
 ];
 
 module.exports = {
@@ -156,7 +162,8 @@ module.exports = {
         registerComponentsConfig,
         ...containerConfig,
         blogConfig,
-        mediumZoomConfig
+        mediumZoomConfig,
+        vssueConfig
     ],
     themeConfig: {
         nav: [
