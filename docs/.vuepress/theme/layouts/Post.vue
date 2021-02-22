@@ -6,7 +6,7 @@
         <Toc></Toc>
         <div id="fade-wrapper">
             <Content></Content>
-            <Vssue :title="this.$page.title" :options="{ proxy: url => `https://demo.lollygag.workers.dev/${url}` }"/>
+            <Comment :options="{proxy}"></Comment>
         </div>
         <component v-if="VueAPlayer && musicList.length"
                    :is="VueAPlayer"
@@ -38,7 +38,9 @@
 
         data() {
             return {
-                VueAPlayer: null
+                VueAPlayer: null,
+                // TODO set your own cors proxy
+                proxy: url => `${url}`
             }
         },
 

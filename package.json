@@ -19,8 +19,6 @@
     },
     "dependencies": {
         "@victorioberra/trianglify-browser": "^4.1.1",
-        "@vssue/api-github-v3": "^1.4.7",
-        "@vssue/vuepress-plugin-vssue": "^1.4.7",
         "animate.css": "^4.1.1",
         "css-doodle": "^0.14.2",
         "dayjs": "^1.10.3",
