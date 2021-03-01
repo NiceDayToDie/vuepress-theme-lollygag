@@ -46,7 +46,11 @@
 
         computed: {
             musicList() {
-                return this.$frontmatter.bgm || [];
+                return (this.$frontmatter.bgm || []).map(item => {
+                    item.src = this.$withBase(item.src);
+                    item.pic = this.$withBase(item.pic);
+                    return item;
+                });
             }
         },
 

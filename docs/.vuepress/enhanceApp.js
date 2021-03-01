@@ -9,6 +9,7 @@ export default ({Vue, options, router, siteData}) => {
     Vue.use(animated);
     Vue.filter("upperCase", value => value.toUpperCase());
     Vue.filter("dateFormat", date => dayjs(date).format("YYYY-MM-DD"));
+    Vue.filter("assetPathFormat", path => path.charAt(0) === "/" ? siteData.base + path.slice(1) : path);
 
     router.beforeEach((to, from, next) => {
         if (to.path === "/") next("/all/"); else next();

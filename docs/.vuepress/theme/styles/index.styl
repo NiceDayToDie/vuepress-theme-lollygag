@@ -59,7 +59,7 @@ kbd
 blockquote
   position relative
   border none
-  border-left 2px solid darken($main-6, 50%)
+  border-left 2px solid $main-8
   color #8c8c8c
   font-size 0.9rem
   font-style normal
@@ -183,14 +183,17 @@ table
   display block
   overflow-x auto
 
+th
+  color $accentColor
+
 tr
-  border-top 1px solid #dfe2e5
+  border-top 1px solid $main-3
 
   &:nth-child(2n)
-    background-color #f6f8fa
+    background-color lighten($main-1, 50%)
 
 th, td
-  border 1px solid #dfe2e5
+  border 1px solid $main-3
   padding .6em 1em
 
 @require 'mobile.styl'

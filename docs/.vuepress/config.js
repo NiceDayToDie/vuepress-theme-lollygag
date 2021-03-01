@@ -2,6 +2,18 @@ const path = require("path");
 
 const postPerPage = 5;
 
+const categories = [
+    {text: "all", link: "/all/"},
+    {text: "guide", link: "/guide/"},
+    {text: "deploy", link: "/deploy/"},
+    {text: "issues", link: "/issues/"},
+    {text: "articles", link: "/articles/"},
+    {text: "example_game", link: "/example_game/"},
+    {text: "example_movie", link: "/example_movie/"},
+    {text: "example_book", link: "/example_book/"},
+    {text: "example_music", link: "/example_music/"}
+];
+
 const searchConfig = [
     "@vuepress/search",
     {
@@ -50,6 +62,19 @@ const containerConfig = [
     ]
 ];
 
+const mediumZoomConfig = [
+    "vuepress-plugin-medium-zoom",
+    {
+        selector: ".content__default img",
+        delay: 1000,
+        options: {
+            margin: 32,
+            background: "#000000",
+            scrollOffset: 0,
+        },
+    },
+];
+
 const blogConfig = [
     "@vuepress/blog",
     {
@@ -64,38 +89,15 @@ const blogConfig = [
         globalPagination: {
             lengthPerPage: postPerPage
         },
-        directories: [
-            {
-                id: "code",
-                dirname: "_posts/code",
-                path: "/code/",
-                itemPermalink: "/code/:year/:month/:day/:slug",
-            },
-            {
-                id: "game",
-                dirname: "_posts/game",
-                path: "/game/",
-                itemPermalink: "/game/:year/:month/:day/:slug",
-            },
-            {
-                id: "life",
-                dirname: "_posts/life",
-                path: "/life/",
-                itemPermalink: "/life/:year/:month/:day/:slug",
-            },
-            {
-                id: "movie",
-                dirname: "_posts/movie",
-                path: "/movie/",
-                itemPermalink: "/movie/:year/:month/:day/:slug",
-            },
-            {
-                id: "music",
-                dirname: "_posts/music",
-                path: "/music/",
-                itemPermalink: "/music/:year/:month/:day/:slug",
+        directories: categories.filter(item => item.text !==  "all").map(item => {
+            let name = item.text;
+            return {
+                id: name,
+                dirname: `_posts/${name}`,
+                path: `/${name}/`,
+                itemPermalink: `/${name}/:year/:month/:day/:slug`
             }
-        ],
+        }),
         frontmatters: [
             {
                 id: "archives",
@@ -112,19 +114,6 @@ const blogConfig = [
             }
         ]
     }
-];
-
-const mediumZoomConfig = [
-    "vuepress-plugin-medium-zoom",
-    {
-        selector: ".content__default img",
-        delay: 1000,
-        options: {
-            margin: 32,
-            background: "#000000",
-            scrollOffset: 0,
-        },
-    },
 ];
 
 module.exports = {
@@ -164,14 +153,7 @@ module.exports = {
             {text: "archives", link: "/all/"},
             {text: "tags", link: "/tags/"}
         ],
-        categories: [
-            {text: "all", link: "/all/"},
-            {text: "life", link: "/life/"},
-            {text: "code", link: "/code/"},
-            {text: "game", link: "/game/"},
-            {text: "movie", link: "/movie/"},
-            {text: "music", link: "/music/"}
-        ],
+        categories: categories,
         post: {
             postPerPage: postPerPage
         },

@@ -11,7 +11,7 @@
                  @mouseover="onCardHover(index)"
                  @mouseleave="onCardLeave(index)">
                 <div class="card-thumb">
-                    <img v-if="item.frontmatter.cover" style="object-fit: cover" :src="item.frontmatter.cover" alt="">
+                    <img v-if="item.frontmatter.cover" style="object-fit: cover" :src="item.frontmatter.cover | assetPathFormat" alt="">
                     <component v-if="cssDoodle && !item.frontmatter.cover" :is="cssDoodle">
                         :doodle {
                             @size: 100%;
@@ -52,10 +52,7 @@
                                 background: @p(#60569e, #e6437d, #ebbf4d);
                                 transform: rotate(@r(360deg));
                                 @size: 30%;
-                                @shape: @p(
-                                circle, diamond, star,
-                                triangle, pentagon, rhombus
-                            );
+                                @shape: @p(circle, diamond, star,triangle, pentagon, rhombus);
                             }
                         }
                     </component>
